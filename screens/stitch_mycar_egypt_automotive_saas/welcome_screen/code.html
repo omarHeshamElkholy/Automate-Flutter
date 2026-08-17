@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome - MyCar Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-secondary-container": "#57657b",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "tertiary-fixed": "#ffd6f7",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed": "#340735",
+                        "inverse-surface": "#213145",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "outline": "#76777d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#515f74",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#a971a4",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "primary-container": "#131b2e",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "secondary-container": "#d5e3fd",
+                        "tertiary-container": "#340735",
+                        "surface-container-high": "#dce9ff",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "surface-container": "#e5eeff",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(248, 249, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .hero-image-bg {
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-sans selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- Language Toggle (Absolute Top Right) -->
+<div class="absolute top-0 right-0 p-margin-mobile md:p-margin-desktop z-50">
+<button class="flex items-center gap-sm px-sm py-xs rounded-full border border-outline-variant/30 bg-surface/50 backdrop-blur-md hover:bg-surface-container transition-colors text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">language</span>
+<span>EN</span>
+</button>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col relative w-full h-screen overflow-hidden">
+<!-- Image Canvas Area (Top ~60% on mobile, left 50% on desktop) -->
+<div class="relative flex-grow md:w-1/2 md:absolute md:top-0 md:left-0 md:h-full">
+<!-- Hero Illustration -->
+<div class="absolute inset-0 hero-image-bg" data-alt="A highly detailed, premium illustration of a modern, sleek automotive garage. The space is pristine, featuring polished concrete floors reflecting cool, bright overhead lighting. In the center, a stylized, high-performance vehicle is partially visible, emphasizing clean lines and technological sophistication. The overall aesthetic is clean, professional, and corporate, utilizing a color palette of cool grays, deep blues, and stark whites. The mood is authoritative and trustworthy, suited for a high-end SaaS platform." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLyAvmv3xSRS0y1PaPcmLhuwO2hK1DOZG8FCJkJRqwGAqcuElhf0JlSPkK609XTtGHsDBz8GQPFmLuqUGjJqJFMD3pnbS3Hv5jLMVBRoBEhjGP_ciexY5EjS_tfM9LqD7alC4tpu-KdGmPXkcZVmDiD8EpDhfaOjLW_KL_puqBKgScqzjQcKZJOBReTKdP7ipq-8_NYF_efOzE13PdoRneNaU1NJFToNh2KXznHt4jhC98yEyXltVSitbiR-JxO2_yr3UQ8Kdqo5s');">
+<!-- Gradient Overlay for smooth transition to content -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background md:bg-gradient-to-r md:from-transparent md:via-background/50 md:to-background"></div>
+</div>
+<!-- Brand Badge (Overlay on Image) -->
+<div class="absolute top-margin-mobile left-margin-mobile md:top-margin-desktop md:left-margin-desktop z-10 flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<span class="font-title-md text-title-md text-surface font-bold tracking-tight drop-shadow-md">MyCar Egypt</span>
+</div>
+</div>
+<!-- Content Area (Bottom ~40% on mobile, right 50% on desktop) -->
+<div class="relative z-20 w-full mt-auto md:mt-0 md:w-1/2 md:absolute md:top-0 md:right-0 md:h-full flex flex-col justify-end md:justify-center px-margin-mobile pb-xl pt-lg md:p-margin-desktop glass-panel md:bg-surface md:border-l md:border-t-0 md:border-outline-variant/30">
+<div class="max-w-md mx-auto w-full space-y-lg">
+<!-- Headline & Copy -->
+<div class="space-y-sm text-center md:text-left">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">
+                        Track all your vehicles in one place.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        The premium operating system for your fleet. Monitor health, expenses, and logs with precision.
+                    </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-sm pt-md">
+<button class="w-full bg-primary text-on-primary py-lg rounded-xl font-body-lg text-body-lg font-semibold hover:bg-on-surface transition-colors duration-200 active:scale-[0.98] shadow-md flex justify-center items-center gap-sm">
+                        Get Started
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent border border-outline text-on-surface py-lg rounded-xl font-body-lg text-body-lg font-semibold hover:bg-surface-container-lowest transition-colors duration-200 active:scale-[0.98]">
+                        Sign In
+                    </button>
+</div>
+<!-- Footer Links -->
+<div class="text-center md:text-left pt-sm">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        By continuing, you agree to our <a class="text-primary hover:underline font-semibold" href="#">Terms of Service</a> and <a class="text-primary hover:underline font-semibold" href="#">Privacy Policy</a>.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Suppressed TopAppBar and BottomNavBar as per Source of Truth instructions for Transactional/Onboarding screens -->
+</body></html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign In | MyCar Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary": "#ffffff",
+                "outline": "#76777d",
+                "surface-container-highest": "#d3e4fe",
+                "on-error-container": "#93000a",
+                "surface": "#f8f9ff",
+                "surface-tint": "#565e74",
+                "on-error": "#ffffff",
+                "inverse-surface": "#213145",
+                "error-container": "#ffdad6",
+                "secondary-fixed-dim": "#b9c7e0",
+                "primary": "#000000",
+                "on-primary-fixed": "#131b2e",
+                "on-background": "#0b1c30",
+                "on-tertiary-fixed": "#340735",
+                "primary-fixed-dim": "#bec6e0",
+                "primary-container": "#131b2e",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed": "#0d1c2f",
+                "tertiary": "#000000",
+                "on-tertiary-container": "#a971a4",
+                "on-surface-variant": "#45464d",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#c6c6cd",
+                "on-primary-fixed-variant": "#3f465c",
+                "on-primary-container": "#7c839b",
+                "error": "#ba1a1a",
+                "tertiary-container": "#340735",
+                "secondary": "#515f74",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffd6f7",
+                "surface-container-high": "#dce9ff",
+                "on-secondary-fixed-variant": "#3a485c",
+                "inverse-primary": "#bec6e0",
+                "secondary-fixed": "#d5e3fd",
+                "primary-fixed": "#dae2fd",
+                "surface-container": "#e5eeff",
+                "on-surface": "#0b1c30",
+                "secondary-container": "#d5e3fd",
+                "on-secondary-container": "#57657b",
+                "tertiary-fixed-dim": "#f1b2ea",
+                "surface-bright": "#f8f9ff",
+                "inverse-on-surface": "#eaf1ff",
+                "surface-container-low": "#eff4ff",
+                "on-tertiary-fixed-variant": "#663564",
+                "background": "#f8f9ff",
+                "surface-variant": "#d3e4fe",
+                "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "md": "16px",
+                "gutter": "16px",
+                "sm": "8px",
+                "lg": "24px",
+                "margin-mobile": "16px",
+                "xs": "4px",
+                "xl": "40px",
+                "base": "4px",
+                "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "title-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "label-caps": ["Inter"],
+                "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            min-height: 100dvh;
+        }
+
+        .hero-background {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .vignette-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, transparent 40%, rgba(248, 249, 255, 0.5) 100%);
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .login-card-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-lg text-on-surface antialiased overflow-x-hidden" data-new-gr-c-s-check-loaded="14.1299.0" data-gr-ext-installed="">
+<!-- Atmospheric Background -->
+<div class="hero-background">
+<img alt="Luxury car silhouette" class="hero-image" src="https://lh3.googleusercontent.com/aida/AP1WRLuE9ifD8rtWkaPBjfHXx78R5Q83o8VEuYym0i_RvEKB4EhleZRa6nw2zQOBYpQbUl1dxvewPUC73AejzbRU4AQuwTeBfGE_cZI7os5k0vG1lyCQo3gs-mQ6SokFY2OgpmwJa-0Ikr_chMH5CZJC11Bj2vhcNAgTEmpU4IGkvt_c1ytpaw4SEid9r71Vat2Vh5h32oWR6WJ3ucWsp4eeZfRIIKFpWTJ6OGuyuCDn5eurG0tdON-R75ASThg" style="transform: scale(1.02) translate(-0.205128px, 4.66063px);">
+<div class="vignette-overlay"></div>
+</div>
+<!-- Content Wrapper -->
+<div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-margin-mobile">
+<!-- Branding Section -->
+<div class="mb-xl text-center animate-in fade-in slide-in-from-top-4 duration-1000">
+<h1 class="font-display-lg text-[40px] leading-tight text-on-surface font-bold tracking-tight">
+                MyCar <span class="text-secondary">Egypt</span>
+</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant/80 mt-xs uppercase tracking-[0.2em]">
+                PREMIUM FLEET MANAGEMENT
+            </p>
+</div>
+<!-- Login Card -->
+<div class="w-full max-w-md bg-surface-container-lowest/90 login-card-blur p-lg md:p-xl rounded-xl shadow-2xl border border-white/50 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+<div class="mb-lg">
+<h2 class="font-title-md text-title-md text-on-surface mb-xs">Welcome Back</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Access your professional dashboard</p>
+</div>
+<form class="space-y-md">
+<!-- Email -->
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-3 pl-11 pr-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" id="email" placeholder="name@company.com" type="email">
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase" for="password">Password</label>
+<a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-3 pl-11 pr-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" id="password" placeholder="••••••••" type="password">
+</div>
+</div>
+<!-- Sign In Button -->
+<button class="w-full font-title-md text-title-md py-4 rounded-lg shadow-lg hover:brightness-110 active:scale-[0.98] transition-all duration-200 mt-sm bg-[#0b1c30] text-on-primary" type="submit">
+                    Sign In
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative my-lg">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/50"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase">
+<span class="bg-surface-container-lowest/0 px-4 text-on-surface-variant/60 font-label-caps tracking-widest bg-white/10 backdrop-blur-sm">Or continue with</span>
+</div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm bg-surface-container-low/50 border border-outline-variant rounded-lg py-3 hover:bg-surface-container-high transition-colors">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Google</span>
+</button>
+<button class="flex items-center justify-center gap-sm bg-surface-container-low/50 border border-outline-variant rounded-lg py-3 hover:bg-surface-container-high transition-colors">
+<svg class="w-5 h-5 text-on-surface" viewBox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.05 1.72-3.32 1.72s-1.87-.71-3.41-.71c-1.54 0-2.31.71-3.43.71c-1.28 0-2.45-.88-3.41-1.84c-1.98-1.98-2.67-5.59-1.37-7.8c.67-1.14 1.75-1.84 2.89-1.84c1.17 0 2.02.69 3.03.69c1.01 0 1.62-.69 3.12-.69c1.07 0 2.06.55 2.75 1.29c-2.48 1.48-1.97 4.96.67 6.19c-.38.89-.92 1.74-1.52 2.28zM12.03 7.25c-.02-2.23 1.61-4.07 3.61-4.25c.19 2.45-2.14 4.47-3.61 4.25z" fill="currentColor"></path>
+</svg>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Apple</span>
+</button>
+</div>
+</div>
+<!-- Footer Link -->
+<p class="mt-xl font-body-sm text-body-sm text-on-surface-variant/80 animate-in fade-in duration-1000 delay-500">
+            Don't have an account? 
+            <a class="text-secondary font-bold hover:underline underline-offset-4" href="#">Register for Fleet Management</a>
+</p>
+<!-- System Version Decor -->
+<div class="mt-xl flex flex-col items-center space-y-xs opacity-30">
+<p class="font-label-caps text-[10px] text-on-surface uppercase tracking-[4px]">SYSTEM V4.2.0-ALPHA</p>
+<div class="flex space-x-md">
+<span class="w-1 h-1 rounded-full bg-on-surface"></span>
+<span class="w-1 h-1 rounded-full bg-on-surface"></span>
+<span class="w-1 h-1 rounded-full bg-on-surface"></span>
+</div>
+</div>
+</div>
+<!-- Interaction Layer -->
+<div class="fixed inset-0 pointer-events-none z-0" id="interactive-glow" style="background: radial-gradient(circle at 187px 854px, rgba(211, 228, 254, 0.15) 0%, transparent 40%);"></div>
+<script>
+        const glow = document.getElementById('interactive-glow');
+        const bgImg = document.querySelector('.hero-image');
+        
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Subtle radial lighting shift
+            glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(211, 228, 254, 0.15) 0%, transparent 40%)`;
+            
+            // Subtle parallax for background
+            const moveX = (x / window.innerWidth - 0.5) * 10;
+            const moveY = (y / window.innerHeight - 0.5) * 10;
+            bgImg.style.transform = `scale(1.02) translate(${moveX}px, ${moveY}px)`;
+        });
+
+        // Form focus visual feedback
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.closest('.relative').parentElement.classList.add('translate-x-1');
+            });
+            input.addEventListener('blur', () => {
+                input.closest('.relative').parentElement.classList.remove('translate-x-1');
+            });
+        });
+    </script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration></html>

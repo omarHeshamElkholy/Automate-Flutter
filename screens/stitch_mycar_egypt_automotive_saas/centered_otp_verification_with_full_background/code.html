@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Identity - MyCar Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#515f74",
+                    "on-surface": "#0b1c30",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary-container": "#d5e3fd",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "on-error-container": "#93000a",
+                    "primary": "#000000",
+                    "on-primary-container": "#7c839b",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-background": "#0b1c30",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary-container": "#340735",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "tertiary": "#000000",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed": "#d5e3fd",
+                    "primary-container": "#131b2e",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-tint": "#565e74",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#a971a4",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed": "#340735",
+                    "on-tertiary-fixed-variant": "#663564",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed-dim": "#f1b2ea",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-container": "#57657b",
+                    "tertiary-fixed": "#ffd6f7",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "margin-desktop": "32px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    font-family: "Inter", sans-serif
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    vertical-align: middle
+    }
+.otp-input:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1)
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px)
+    }
+.bg-automotive {
+    background-image: linear-gradient(rgba(248, 249, 255, 0.6), rgba(248, 249, 255, 0.6)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuC2OGKVzy-oZlm_GMZo36KzQxNb2BR2a796IeNlSy-Xjcica3BHK2l93rnl1yaoWOx7-QGP4R5jSxsTkdXv3AI5jjIT3a2JYYQ4cJzc2Zn_Mc03VkTk6xy6N-gANx1EwxgxEo-cleiOpswpYOnscIj4crdYyQyka1DNE--5Wmf-mYo9Ybt9M7eLer8abXRY6km7xksjRtUkKzspw0slzjYSP-eenWmDzj33lEvMEHPwB-YCRn9tC848BxGOjetkn7S-xbewYODp9jM);
+    background-size: cover;
+    background-position: center
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-hidden">
+<!-- High-end Atmospheric Background -->
+<div class="absolute inset-0 z-0 bg-automotive" data-alt="A high-end, atmospheric cinematic shot of a luxury sedan silhouette shrouded in a soft, bright white fog. The scene is dominated by a minimalist light-mode aesthetic with ethereal lighting that highlights the sleek curves of the car. The mood is sophisticated and mysterious, using a palette of subtle grays and pristine whites to convey premium automotive engineering and modern corporate elegance." style="background-size: cover; background-position: center; position: fixed; inset: 0;">
+</div>
+<!-- Top Branding Anchor -->
+<header class="relative z-10 w-full flex justify-between items-center px-margin-mobile h-16 bg-surface/30 backdrop-blur-md">
+<h1 class="text-title-md font-title-md font-bold text-on-surface">MyCar Egypt</h1>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">help_outline</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center relative z-10 px-margin-mobile min-h-screen">
+<!-- Verification Card -->
+<div class="glass-card w-full max-w-md p-lg rounded-xl shadow-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<!-- Security Icon -->
+<div class="w-16 h-16 mb-lg rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<!-- Content Header -->
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-sm">Verify Your Identity</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl px-2">
+                We've sent a 4-digit code to your registered device. Enter it below to proceed.
+            </p>
+<!-- OTP Input Group -->
+<div class="flex gap-md mb-xl">
+<input autofocus="" class="otp-input w-14 h-16 text-center text-headline-lg font-headline-lg bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-lg font-headline-lg bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-lg font-headline-lg bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary transition-all" maxlength="1" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-lg font-headline-lg bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary transition-all" maxlength="1" type="text"/>
+</div>
+<!-- Timer / Resend -->
+<div class="mb-xl">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                    Didn't receive a code? <span class="text-primary font-semibold ml-1">Resend in 00:58</span>
+</p>
+</div>
+<!-- Action Button -->
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all duration-150 font-semibold mb-lg">
+<span class="material-symbols-outlined">check_circle</span>
+                Verify
+            </button>
+<!-- Secondary Action -->
+<button class="text-primary font-body-sm text-body-sm font-semibold hover:underline transition-all">
+                Use an alternative method
+            </button>
+</div>
+</main>
+<!-- Footer Space -->
+<footer class="relative z-10 p-md text-center">
+<p class="font-label-caps text-label-caps text-on-secondary-fixed-variant opacity-60">
+            © 2024 MyCar Egypt Automotive Solutions
+        </p>
+</footer>
+<script>
+        // Micro-interaction for OTP auto-focus movement
+        const inputs = document.querySelectorAll('.otp-input');
+        
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Atmospheric parallax effect (subtle)
+        window.addEventListener('mousemove', (e) => {
+            const bg = document.querySelector('.bg-automotive');
+            const x = (e.clientX / window.innerWidth - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 10;
+            bg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body></html>

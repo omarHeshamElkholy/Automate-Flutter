@@ -1,0 +1,302 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f8f9ff",
+                        "on-tertiary-container": "#a971a4",
+                        "on-tertiary-fixed": "#340735",
+                        "on-primary-container": "#7c839b",
+                        "secondary-fixed": "#d5e3fd",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-background": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "secondary-container": "#d5e3fd",
+                        "tertiary-container": "#340735",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "on-secondary-container": "#57657b",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary": "#515f74",
+                        "outline": "#76777d",
+                        "primary-fixed": "#dae2fd",
+                        "tertiary-fixed": "#ffd6f7",
+                        "outline-variant": "#c6c6cd",
+                        "on-surface-variant": "#45464d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#0d1c2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24 antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-md border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform p-2 -ml-2">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">MyCar Egypt</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/50">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvxfVjKkeyD4S_iP0HgIv4lM3Z6LiK40e1FEI10chAAsSYcQUCb85zFDGtY0Dg3Ik_erfrSrsdRhrpokUlKNtQOv39LZsh0LzkIu4CEl9Y4JdqLLVw41aPKF_Ji5QFNQfAARc1ykIIk5XeTlv9ZPOzLFMd-erlxMhDz4x4Vv9sPmFMh4JLYyEillQn6osTTYlekCu9dsHgrcmxIBMKnA8wwrXkIucHUMzyrmfFVgTm0_zb8hVvlox9em_b4_7rxdRlEDRfecNowIE">
+</div>
+</div>
+</header>
+<main class="pt-16 px-margin-mobile">
+<!-- Premium Vehicle Hero Section (from SCREEN_28) -->
+<section class="mt-4 mb-lg relative rounded-xl overflow-hidden bg-surface-container-lowest border border-outline-variant/50 shadow-sm">
+<div class="flex flex-col">
+<!-- Car Image -->
+<div class="w-full h-64 relative bg-surface-container-high">
+<img alt="Mercedes-Benz C-Class" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGObUmDLCy8VInQ3-ZpNxmxrp0gZGHxsHtSEM4qSIpguvkvjCX-BNHSorgIBtXOqIhmhYbK38v2oYq7h-4PbCZn2r780oWA_eeK1VzNOqI-QubMz5ZMHJZR5fLZ7cGBBPRolEsLcnw0KHRbZ1RRmoA89wwj9W3iPSqCd68RP6tP_3hGHy04cAcvM3PqRHmcLLA-wP0hcG5LcwtBwHh4_S3IUKQl8dg8vsHPL3o3I46x1j5584-3Rns22bLgP6n393qVy9ANTZS6r4">
+<!-- Status Badge -->
+<div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-caps font-label-caps text-on-surface">Active</span>
+</div>
+</div>
+<!-- Car Details -->
+<div class="w-full p-lg bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1">2023</p>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-1">Mercedes-Benz C300</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Plate: <span class="font-bold text-on-surface">أ ب ج 123</span></p>
+</div>
+<button class="p-2 border border-outline-variant rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-md mt-6">
+<div class="bg-surface p-sm rounded-lg border border-outline-variant/30">
+<p class="text-label-caps font-label-caps text-on-surface-variant flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[16px]">speed</span> Odometer
+                                    </p>
+<p class="text-title-md font-title-md text-on-surface">45,200 km</p>
+</div>
+<div class="bg-surface p-sm rounded-lg border border-outline-variant/30">
+<p class="text-label-caps font-label-caps text-on-surface-variant flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-[16px]">directions_car</span> Engine
+                                    </p>
+<p class="text-title-md font-title-md text-on-surface">2.0L Turbo</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation Tabs -->
+<nav class="mt-6 flex border-b border-outline-variant/30 overflow-x-auto no-scrollbar">
+<button class="px-4 py-3 font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap hover:text-primary transition-colors">OVERVIEW</button>
+<button class="px-4 py-3 font-label-caps text-label-caps text-primary border-b-2 border-primary whitespace-nowrap">SERVICES</button>
+<button class="px-4 py-3 font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap hover:text-primary transition-colors">EXPENSES</button>
+<button class="px-4 py-3 font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap hover:text-primary transition-colors">REMINDERS</button>
+<button class="px-4 py-3 font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap hover:text-primary transition-colors">HISTORY</button></nav>
+<!-- Service Content -->
+<div class="mt-8 space-y-8">
+<!-- Scheduled Services (Upcoming) -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-primary">Scheduled Services</h3>
+<span class="material-symbols-outlined text-outline">calendar_month</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-4 flex items-center gap-4 relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary-container"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">oil_barrel</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-body-lg text-primary">Major Engine Service</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Due in 1,240 km • Oct 24, 2024</p>
+</div>
+<div class="text-right">
+<button class="bg-primary text-on-primary px-3 py-2 rounded-lg font-label-caps text-label-caps active:scale-95 transition-all">BOOK</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Service History (Timeline Layout) -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-primary">Service History</h3>
+<button class="text-secondary font-label-caps text-label-caps flex items-center gap-1">
+                        VIEW ALL <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="relative pl-8 space-y-6 before:content-[''] before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/50">
+<!-- Service Card 1 -->
+<div class="relative bg-surface border border-outline-variant/20 rounded-xl p-4 shadow-sm">
+<div class="absolute -left-[25px] top-4 w-4 h-4 rounded-full bg-background border-2 border-primary"></div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SEP 12, 2023</span>
+<h4 class="font-title-md text-body-lg text-primary">Brake System Flush</h4>
+</div>
+<div class="text-primary font-bold">EGP 4,200</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">speed</span>
+<span class="">12,450 km</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+<span class="">Mercedes-Benz Certified</span>
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="relative bg-surface border border-outline-variant/20 rounded-xl p-4 shadow-sm">
+<div class="absolute -left-[25px] top-4 w-4 h-4 rounded-full bg-background border-2 border-outline-variant"></div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">JUN 05, 2023</span>
+<h4 class="font-title-md text-body-lg text-primary">Annual Inspection &amp; Oil</h4>
+</div>
+<div class="text-primary font-bold">EGP 2,850</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">speed</span>
+<span class="">8,200 km</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">receipt_long</span>
+<span class="">Invoice #MC-2039</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-background/70 backdrop-blur-md border-t border-outline-variant/30 flex justify-around items-center h-20 px-2 pb-safe shadow-lg"><button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-label-caps">Services</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-xl px-4 py-1 active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">directions_car</span>
+<span class="font-label-caps text-label-caps">Garage</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Records</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Expenses</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button></nav>
+<script>
+        // Micro-interaction for tab switching
+        const tabs = document.querySelectorAll('nav[class*="overflow-x-auto"] button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-b-2', 'border-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.add('text-primary', 'border-b-2', 'border-primary');
+                tab.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+
+
+</body></html>

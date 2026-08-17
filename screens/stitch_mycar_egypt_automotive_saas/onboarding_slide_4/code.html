@@ -1,0 +1,193 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AutoScale Premium Onboarding - Real-time Alerts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            width: 24px;
+            background-color: #000000;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#340735",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "outline-variant": "#c6c6cd",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface": "#f8f9ff",
+                        "on-secondary-container": "#57657b",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed": "#340735",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#515f74",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-container": "#a971a4",
+                        "secondary-container": "#d5e3fd",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffd6f7",
+                        "on-surface-variant": "#45464d",
+                        "inverse-surface": "#213145",
+                        "on-surface": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl flex justify-between items-center px-margin-mobile py-md">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-headline-lg-mobile" data-icon="directions_car">directions_car</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">AutoScale</h1>
+</div>
+<button class="text-on-surface-variant font-label-caps uppercase tracking-wider hover:opacity-80 transition-opacity active:scale-95 transition-transform" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+            Skip
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative h-screen w-full flex flex-col pt-24">
+<!-- Hero Visual Area -->
+<div class="flex-1 relative mx-margin-mobile overflow-hidden rounded-xl bg-surface-container-highest">
+<!-- Atmospheric Image Background -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A cinematic, shallow-focus shot of a luxury electric vehicle's side mirror during a clear morning. The lighting is soft, crisp, and high-end, reflecting a pristine light-mode aesthetic. An elegant digital red glowing warning icon is superimposed on the mirror glass, suggesting a blind-spot or maintenance alert. The overall mood is sophisticated, professional, and technologically advanced, using a palette of silver, white, and subtle deep blue tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQohn1LNKXhJPm0-9h2_xmb3hLk6ZRE7ibcq3vs9KgDEITxQze1p-gsOZiFDP9haxhBwC1QkNCkXXsQ8zbJ8C64sdnwBH2harPHLtCx6vmRZQG9tL1atysHBwOokYYZuvxFs7c-NCZ8wfo8ZoGRiLsf-_h0CPju0nZxa4mkpuWmIxjFctm-7XS96n1iJ1iwY8cBUNk3IuK-lkWYW05KQZJhXy9tPZRo_RQa09lQi7soNX9FnGbo3u8ksvvTdeaV9oELifMcmC7Li8')">
+</div>
+<!-- Gradient Overlays for legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest/80 via-transparent to-transparent"></div>
+<!-- Floating SaaS Alert Badge (Micro-interaction style) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-md">
+<div class="bg-error/10 border border-error/20 p-md rounded-xl glass-panel animate-bounce shadow-lg">
+<span class="material-symbols-outlined text-error text-[48px]" data-icon="report" style="font-variation-settings: 'FILL' 1;">report</span>
+</div>
+<div class="bg-surface-container-lowest/90 px-md py-sm rounded-full shadow-sm glass-panel border border-outline-variant">
+<span class="font-label-caps text-on-surface-variant">CRITICAL VEHICLE ALERT</span>
+</div>
+</div>
+</div>
+<!-- Onboarding Text & Content -->
+<div class="px-margin-mobile py-xl text-center flex flex-col items-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-md font-bold" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;">Stay Informed, Stay Safe</h2>
+<p class="font-body-lg text-on-surface-variant max-w-sm" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;">
+                Get instant notifications about critical vehicle alerts, security updates, and document expirations before they become issues.
+            </p>
+<!-- Pagination Dots -->
+<div class="flex gap-sm mt-xl mb-base"><div class="h-1.5 w-1.5 rounded-full bg-outline-variant"></div><div class="h-1.5 w-1.5 rounded-full bg-outline-variant"></div><div class="h-1.5 w-6 rounded-full bg-primary transition-all duration-300"></div><div class="h-1.5 w-1.5 rounded-full bg-outline-variant"></div><div class="h-1.5 w-1.5 rounded-full bg-outline-variant"></div></div>
+</div>
+</main>
+<!-- Bottom Navigation Controls -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-between items-center px-margin-mobile py-lg pb-safe">
+<!-- Previous Button -->
+<button class="flex flex-row items-center justify-center text-secondary px-lg py-sm font-label-caps uppercase tracking-wider hover:bg-secondary-container transition-colors active:scale-98 transition-all duration-200" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;">
+<span class="material-symbols-outlined mr-xs" data-icon="chevron_left">chevron_left</span>
+            Previous
+        </button>
+<!-- Next Button (Active Destination Style) -->
+<button class="flex flex-row items-center justify-center bg-primary text-on-primary rounded-full px-xl py-md font-label-caps uppercase tracking-wider hover:opacity-90 active:scale-98 transition-all duration-200 shadow-sm" style="opacity: 1; transform: translateY(0px); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;">
+            Next
+            <span class="material-symbols-outlined ml-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Subtle entrance animations
+            const elements = document.querySelectorAll('h2, p, button');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+                el.style.transition = `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+
+
+</body></html>

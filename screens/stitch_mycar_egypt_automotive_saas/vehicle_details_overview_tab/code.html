@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MyCar Egypt - Vehicle Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed-dim": "#b9c7e0",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface": "#0b1c30",
+                      "tertiary-fixed": "#ffd6f7",
+                      "surface-tint": "#565e74",
+                      "primary-fixed": "#dae2fd",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "outline-variant": "#c6c6cd",
+                      "on-primary-container": "#7c839b",
+                      "on-background": "#0b1c30",
+                      "tertiary-fixed-dim": "#f1b2ea",
+                      "on-tertiary-fixed": "#340735",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#d3e4fe",
+                      "on-primary-fixed": "#131b2e",
+                      "primary-container": "#131b2e",
+                      "secondary-fixed": "#d5e3fd",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-container": "#57657b",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "primary": "#000000",
+                      "tertiary": "#000000",
+                      "tertiary-container": "#340735",
+                      "on-tertiary-container": "#a971a4",
+                      "inverse-surface": "#213145",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#0d1c2f",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-surface-variant": "#45464d",
+                      "secondary": "#515f74",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#bec6e0",
+                      "background": "#f8f9ff",
+                      "on-secondary-fixed-variant": "#3a485c",
+                      "on-tertiary-fixed-variant": "#663564",
+                      "secondary-container": "#d5e3fd",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f8f9ff",
+                      "outline": "#76777d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "base": "4px",
+                      "xl": "40px",
+                      "margin-desktop": "32px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "title-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-50 flex justify-between items-center px-margin-mobile w-full h-16">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a Mediterranean man in his late 30s wearing a clean, modern navy blue polo shirt. The lighting is bright and airy, reflecting a high-end corporate lifestyle. The background is a soft-focus office environment with subtle hints of glass and steel, maintaining a premium light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpqjv2Rcv_NVJVubLCFah9rXxBlPPONllLAOicyB2gZnHnml3U4xGIa2HgBGmDTFtkODAPZwh5Kt21-s9JP2t_R5hI5VGBSV72xNWstCtovz0i9iE0Eq60B62bxEVjImteRK7SNCbBtTx0VYbTT5o9iuxi0fHrym-zqiCP1Q9GyscF0f5kj22OxUDzS0No10zFQfOQPQ4KW_5CQH3iOnt00p_zs79_Uy3oyEBKpJippKMhzzHUokLJVDDvRifiSreoeKn9QyhgfN4">
+</div>
+<span class="text-title-md font-title-md font-bold text-on-surface">MyCar Egypt</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<main class="max-w-5xl mx-auto">
+<!-- Hero Section -->
+<section class="relative w-full aspect-[16/10] md:aspect-[21/9] overflow-hidden">
+<img alt="Mercedes-Benz C300" class="w-full h-full object-cover" data-alt="A pristine, high-fidelity studio photograph of a silver 2023 Mercedes-Benz C300 parked in a minimalist, modern architectural setting with reflective grey concrete floors. The lighting is expertly controlled with soft cinematic highlights dancing along the car's aerodynamic curves. The overall color palette consists of cool greys, deep blacks, and crisp whites, evoking a premium and professional automotive SaaS atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb-hxNWQKIx1LphjEbtRUV0LmAgeko_NIzZjjNMAc8coPiBGn7Cmwz5uwKDLGlVgOJOiGKNOVwokaZHG_sg0oBiv9kYzSItxhtQb_IB3f6ZXCOMwd6r9FaH7VWO917NIKr4e-Nu2fMdndGqP1s2OKZ5EuFFMpaqy1K4y5xl42rnz9rqdycDjxf_rNNciSxspUb-pjRu4reM031bLW1yoyyiCxWoeP7d2sgSz2F0L0xfuZz17pJS14vG-Fa1Lhf_7vEruEsPDgkHRE">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-margin-mobile right-margin-mobile flex justify-between items-end">
+<div>
+<span class="bg-primary text-on-primary px-sm py-xs rounded-lg text-label-caps font-label-caps mb-sm inline-block" style="height: 24px; transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);">Active</span>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface">Mercedes-Benz C300</h1>
+<p class="text-body-sm text-on-surface-variant">2023 Model • Polar White</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span class="text-body-sm font-bold">45,200 km</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">settings_input_component</span>
+<span class="text-body-sm font-bold">2.0L Turbo</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Tab Navigation -->
+<nav class="flex px-margin-mobile border-b border-outline-variant/30 overflow-x-auto no-scrollbar bg-surface-container-lowest sticky top-16 z-40">
+<button class="px-md py-md text-primary font-bold border-b-2 border-primary whitespace-nowrap">Overview</button>
+<button class="px-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Services</button>
+<button class="px-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Expenses</button>
+<button class="px-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Reminders</button>
+<button class="px-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">History</button>
+</nav>
+<!-- Bento Grid Content -->
+<div class="p-margin-mobile grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Fleet Health Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-lg border border-outline-variant/30 flex flex-col justify-between relative overflow-hidden group">
+<div class="z-10">
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="text-label-caps font-label-caps text-on-secondary-container">FLEET HEALTH</p>
+<h2 class="text-display-lg font-display-lg text-on-surface mt-xs">98.4<span class="text-headline-lg font-headline-lg">%</span></h2>
+</div>
+<div class="bg-green-100 text-green-700 px-sm py-xs rounded flex items-center gap-xs text-label-caps">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="">+1.2%</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant max-w-[240px]">Your vehicle performance is optimized. No critical diagnostic alerts recorded in the last 30 days.</p>
+</div>
+<!-- Mini Growth Chart (CSS Implementation) -->
+<div class="mt-lg h-16 w-full flex items-end gap-1">
+<div class="bg-primary/10 w-full rounded-t-sm h-[40%]" style="transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); height: 25.6px;"></div>
+<div class="bg-primary/10 w-full rounded-t-sm h-[55%]" style="height: 35.2px; transition: height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+<div class="bg-primary/10 w-full rounded-t-sm h-[45%]" style="height: 28.8px; transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+<div class="bg-primary/10 w-full rounded-t-sm h-[70%]" style="height: 44.8px; transition: height 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+<div class="bg-primary/10 w-full rounded-t-sm h-[60%]" style="height: 38.4px; transition: height 1s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+<div class="bg-primary/10 w-full rounded-t-sm h-[85%]" style="height: 54.4px; transition: height 1.1s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+<div class="bg-primary w-full rounded-t-sm h-[98%] shadow-sm" style="height: 62.7167px; transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+</div>
+</div>
+<!-- Quick Stats Side Column -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-highest rounded-xl p-md border border-outline-variant/30">
+<p class="text-label-caps font-label-caps text-on-secondary-container mb-xs">MONTHLY COST</p>
+<p class="text-title-md font-bold text-on-surface">EGP 12,450</p>
+<div class="mt-sm w-full bg-outline-variant/30 h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%]" style="height: 4px; transition: height 1.3s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+</div>
+</div>
+<div class="bg-primary-container rounded-xl p-md border border-outline-variant/20 shadow-sm">
+<p class="text-label-caps font-label-caps text-primary-fixed-dim mb-xs">FLEET ALERTS</p>
+<p class="text-title-md font-bold text-white">3 Vehicles Due Service</p>
+<button class="mt-md text-label-caps font-bold text-primary-fixed bg-white/10 hover:bg-white/20 w-full py-sm rounded-lg transition-colors">VIEW ALL</button>
+</div>
+</div>
+<!-- Vehicle Info Cards Grid -->
+<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-3 gap-gutter mt-2">
+<!-- Insurance -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl flex items-center gap-md hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">INSURANCE</p>
+<p class="text-body-lg font-bold text-on-surface">Active</p>
+<p class="text-xs text-on-secondary-container">Expires Dec 2024</p>
+</div>
+</div>
+<!-- Warranty -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl flex items-center gap-md hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">WARRANTY</p>
+<p class="text-body-lg font-bold text-on-surface">Valid</p>
+<p class="text-xs text-on-secondary-container">Full coverage active</p>
+</div>
+</div>
+<!-- Next Service -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl flex items-center gap-md hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-error">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-error">NEXT SERVICE</p>
+<p class="text-body-lg font-bold text-on-surface">Due in 2,500 km</p>
+<p class="text-xs text-on-secondary-container">Service A Maintenance</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-surface/80 dark:bg-background/80 backdrop-blur-xl border-t border-outline-variant/30 flex justify-around items-center py-2 pb-safe px-2 z-50 shadow-lg md:hidden"><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="text-label-caps font-label-caps">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:opacity-80 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="text-label-caps font-label-caps">Garage</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-caps font-label-caps">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-caps font-label-caps">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a></nav>
+<script>
+        // Micro-interaction for growth chart
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.bg-primary\\/10, .bg-primary');
+            bars.forEach((bar, index) => {
+                const height = bar.style.height || getComputedStyle(bar).height;
+                bar.style.height = '0px';
+                setTimeout(() => {
+                    bar.style.transition = `height ${0.5 + index * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+                    bar.style.height = height;
+                }, 100);
+            });
+        });
+    </script>
+
+
+</body></html>

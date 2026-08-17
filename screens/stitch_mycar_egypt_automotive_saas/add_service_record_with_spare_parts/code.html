@@ -1,0 +1,365 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Log Service | MyCar Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#340735",
+                        "surface-tint": "#565e74",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "surface-dim": "#cbdbf5",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "inverse-surface": "#213145",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-container": "#a971a4",
+                        "secondary": "#515f74",
+                        "outline": "#76777d",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "tertiary-fixed": "#ffd6f7",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed": "#dae2fd",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#d5e3fd",
+                        "on-secondary-container": "#57657b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#340735",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "margin-desktop": "32px",
+                        "base": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(248, 249, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 198, 205, 0.3);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(86, 94, 116, 0.2);
+        }
+        /* Custom scrollbar for data-heavy sections */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c6cd;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 z-50 flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<button class="p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">MyCar Egypt</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary hover:bg-surface-container-high/50 p-2 transition-colors rounded-full cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a Mediterranean man in his late 30s with a clean-shaven look and smart attire. He is set against a blurred, high-end office background with cool blue and grey tones. The lighting is soft and professional, capturing a modern corporate aesthetic that feels trustworthy and authoritative for a premium SaaS application profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYrOZ2zot5Mf9BKCA58jzj6iV2_Xy7MHrbSYxV-YbLv8kPfHclQYL7iPDCpI5DHL5WUqd5NKYTz9Nh9YdQqFiujNVwOIg8lInfJH6TbSwCef7aNqwx-dXVLImu8jVsn-0aD2Q1QSWl2iG_A8dyNDSr5uh9l7ErLLQW_yo8MESnUaaaUzbGxfxUJ6l1Ft-hiVH1rPVf8zI4nzIzeL4U74RLEtC8JwacwOc_jA-P2CoqPCbJDgfx_MvmHR1dbK0gqSBuzpIVDhfcv1I">
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile mt-lg">
+<!-- Hero Section / Title -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary">Log Maintenance</h2>
+<p class="text-secondary font-body-sm">Keep your vehicle's health records up to date for better resale value and performance.</p>
+</div>
+<!-- Form Layout (Bento Style Cards) -->
+<form class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Core Details -->
+<div class="md:col-span-7 space-y-gutter">
+<div class="glass-card p-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">engineering</span>
+<h3 class="font-title-md text-title-md">Service Details</h3>
+</div>
+<div class="space-y-md">
+<!-- Service Type -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Service Type</label>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-lg appearance-none cursor-pointer">
+<option>Oil Change</option>
+<option>Brake Pads Replacement</option>
+<option>Tire Rotation</option>
+<option>Engine Diagnostic</option>
+<option>Air Filter Change</option>
+<option>AC Maintenance</option>
+<option>Other</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<!-- Date -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Date</label>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-lg" type="date">
+</div>
+<!-- Mileage -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Mileage</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-lg pr-12" placeholder="0" type="number">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary font-label-caps">KM</span>
+</div>
+</div>
+</div>
+<!-- Workshop -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Workshop / Service Center</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 pl-10 text-body-lg" placeholder="Search service center name..." type="text">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+</div>
+<div class="mt-2 flex flex-wrap gap-xs">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-sm text-[10px] font-bold uppercase cursor-pointer hover:opacity-80">Ghabbour Auto</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-sm text-[10px] font-bold uppercase cursor-pointer hover:opacity-80">Ezz Elarab</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-sm text-[10px] font-bold uppercase cursor-pointer hover:opacity-80">Bavarian</span>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">description</span>
+<h3 class="font-title-md text-title-md">Additional Information</h3>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Notes</label>
+<textarea class="bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-lg resize-none" placeholder="Specify parts used or future recommendations..." rows="4"></textarea>
+</div>
+</div><div class="glass-card p-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+<h3 class="font-title-md text-title-md">Spare Parts</h3>
+</div>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Renewed Spare Part</label>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-lg appearance-none cursor-pointer">
+<option value="">Select a part...</option>
+<option>Oil Filter</option>
+<option>Air Filter</option>
+<option>Brake Pads</option>
+<option>Battery</option>
+<option>Spark Plugs</option>
+<option>Other</option>
+</select>
+</div>
+<button class="flex items-center gap-xs text-secondary font-label-caps hover:text-primary transition-colors px-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+Add Another Part
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Financials & Uploads -->
+<div class="md:col-span-5 space-y-gutter">
+<!-- Cost Card -->
+<div class="glass-card p-lg rounded-xl shadow-sm border-l-4 border-l-secondary">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h3 class="font-title-md text-title-md">Maintenance Cost</h3>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-secondary px-xs">Total Amount</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 text-headline-lg-mobile font-bold pr-16" placeholder="0.00" step="0.01" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-primary font-bold">EGP</span>
+</div>
+<p class="text-[11px] text-outline px-xs mt-1 italic">Includes VAT and labor fees.</p>
+</div>
+</div>
+<!-- Receipt Upload -->
+<div class="glass-card p-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+<h3 class="font-title-md text-title-md">Receipt / Invoice</h3>
+</div>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center group hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-md group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container">cloud_upload</span>
+</div>
+<p class="font-title-md text-primary">Upload Document</p>
+<p class="text-body-sm text-secondary">PDF, JPG, or PNG (Max 5MB)</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-md pt-lg">
+<button class="bg-primary-container text-on-primary-container h-14 rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md" type="submit">
+<span class="material-symbols-outlined">save</span>
+                        Log Service
+                    </button>
+<button class="border border-outline h-14 rounded-xl font-semibold text-primary hover:bg-surface-container-high transition-colors active:scale-[0.98]" type="button">
+                        Cancel
+                    </button>
+</div>
+</div>
+</form>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/80 backdrop-blur-md border-t border-outline-variant/20 shadow-lg md:hidden"><a class="flex flex-col items-center justify-center text-secondary active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home_repair_service</span>
+<span class="font-label-caps text-label-caps">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">garage</span>
+<span class="font-label-caps text-label-caps">Garage</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-label-caps text-label-caps">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a></nav>
+<!-- Subtle Background Graphic for Automotive Vibe -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1] overflow-hidden">
+<svg class="absolute -top-1/4 -right-1/4 w-[150%] h-[150%]" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path class="text-primary" d="M 0 500 Q 250 250 500 500 T 1000 500" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path class="text-primary" d="M 0 600 Q 250 350 500 600 T 1000 600" fill="none" stroke="currentColor" stroke-width="1"></path>
+<path class="text-primary" d="M 0 400 Q 250 150 500 400 T 1000 400" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</svg>
+</div>
+<script>
+        // Simple micro-interaction for the file upload area
+        const uploadZone = document.querySelector('.border-dashed');
+        if (uploadZone) {
+            uploadZone.addEventListener('click', () => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*,application/pdf';
+                input.onchange = (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        uploadZone.innerHTML = `
+                            <div class="flex items-center gap-md">
+                                <span class="material-symbols-outlined text-secondary" style="font-size: 40px">task</span>
+                                <div class="text-left">
+                                    <p class="font-title-md text-primary">${file.name}</p>
+                                    <p class="text-body-sm text-secondary">${(file.size / 1024 / 1024).toFixed(2)} MB • Ready to upload</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                };
+                input.click();
+            });
+        }
+
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Logging...';
+            btn.classList.add('opacity-70');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Success';
+                btn.classList.remove('bg-primary-container');
+                btn.classList.add('bg-green-600', 'text-white');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-green-600', 'text-white', 'opacity-70');
+                    btn.classList.add('bg-primary-container');
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+
+
+</body></html>

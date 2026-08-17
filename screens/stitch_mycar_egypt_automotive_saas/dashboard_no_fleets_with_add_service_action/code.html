@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MyCar Egypt Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "background": "#f8f9ff",
+                      "on-tertiary-container": "#a971a4",
+                      "tertiary": "#000000",
+                      "on-surface-variant": "#45464d",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#0d1c2f",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "primary-fixed": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "surface": "#f8f9ff",
+                      "on-secondary-container": "#57657b",
+                      "inverse-primary": "#bec6e0",
+                      "surface-variant": "#d3e4fe",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary": "#515f74",
+                      "outline": "#76777d",
+                      "on-background": "#0b1c30",
+                      "surface-dim": "#cbdbf5",
+                      "on-tertiary-fixed-variant": "#663564",
+                      "tertiary-container": "#340735",
+                      "primary-fixed-dim": "#bec6e0",
+                      "inverse-on-surface": "#eaf1ff",
+                      "primary": "#000000",
+                      "on-tertiary-fixed": "#340735",
+                      "secondary-fixed-dim": "#b9c7e0",
+                      "on-secondary-fixed-variant": "#3a485c",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#d5e3fd",
+                      "primary-container": "#131b2e",
+                      "surface-container-highest": "#d3e4fe",
+                      "secondary-fixed": "#d5e3fd",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#565e74",
+                      "on-primary-container": "#7c839b",
+                      "inverse-surface": "#213145",
+                      "outline-variant": "#c6c6cd",
+                      "on-surface": "#0b1c30",
+                      "tertiary-fixed-dim": "#f1b2ea",
+                      "tertiary-fixed": "#ffd6f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "base": "4px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased pb-24" data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1299.0">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl border-b border-outline-variant/30 z-50 flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20 shadow-sm">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a middle-aged male fleet executive with a friendly expression. He is set against a clean, blurred office background with soft daylight. The aesthetic is modern corporate, featuring crisp details and a high-end, trustworthy atmosphere consistent with luxury automotive software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfOZg6tE6PG3K8N1552SbfTvJhfe52nr-kftg3Dg-ENf7v4t5EOoGNjlyFOkD1kQFyWJangBp2DDxr2F0epjMcUs8S5XqFk7G9zY26jmf7QGZdhgab_78ztGFvJrebOrpy0KqPtAlFLoF7xMBeowzFc-FVxmVzg7mCQa0cY0UDthstGce1TW0Kb3hpSLhGYfu5m4DBkZj72Z8UOnxpXuWMgjX5Aa8IckBzsiKelYfSm7_T9ZvbxL5-7WM6AUUwAqANss_byOWDDV4">
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">MyCar Egypt</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-lg">
+<!-- Vehicle Health Section -->
+<section class="flex flex-col gap-md">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-title-md text-title-md text-on-background">Vehicle Fleet Health</h2>
+<span class="font-label-caps text-label-caps text-secondary uppercase">0 Active Units</span>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/20 flex flex-col items-center text-center p-4">
+<!-- Atmospheric Background Elements -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-[120px]"></div>
+</div>
+<!-- Empty State Content -->
+<div class="relative z-10 max-w-lg">
+<div class="flex justify-center mb-4">
+<div class="relative w-48 flex items-center justify-center h-32">
+<!-- Soft focus luxury car silhouette placeholder -->
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-dim to-transparent rounded-full animate-pulse opacity-40"></div>
+<img class="w-full h-full object-contain mix-blend-multiply opacity-80" data-alt="A minimalist, high-end artistic representation of a luxury car silhouette emerging from shadows in a clean, modern garage space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLSrVpemqQAneCLyzoar-MYPSs6v873ApteUdmPUXzkdbU1mqP9yCpL5n50FzWx0qmhE9UgppBg66_UAcWtujrWuojyt4l0FuJvJ9luF1_ZfFIHjvQyKmDXi0R11Oynz4cY-HTg2YDix1Zx1Z1wHg0KjpXZDS8jo_V3dEFjJuh5cEpWdkewO9ePp_rFfUao-RKbSmg3XQZ0JhPUpOG82Z87XD8ky1Q6Rs7El4c4krjY7qaDfrDLLVwtyOudIrO6vlpLQW2wANMoL0">
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">Your Garage is Empty</h2>
+<p class="font-body-sm text-on-surface-variant leading-relaxed mb-6">
+                        Start your journey by adding your first vehicle to track health, expenses, and service history.
+                    </p>
+<button class="inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-full font-semibold shadow-lg hover:opacity-90 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">add</span>
+<span class="">Add Your First Vehicle</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Map View Section -->
+<section class="relative w-full h-72 rounded-xl overflow-hidden shadow-lg border border-outline-variant/30">
+<div class="absolute inset-0 bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-80" data-alt="A highly detailed, stylized digital map of Cairo, Egypt, showing clean city blocks, major highways, and the Nile River. The map uses a sophisticated dark-mode aesthetic with lavender and deep blue accents. Several glowing pulse markers indicate service centers across the urban sprawl, creating a modern navigation interface feel." data-location="Cairo, Egypt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfOuxDGf3IAKQyOAb9QELpI5veTvyNVZnYCvXRATizY2GV2n8JStyZxxSibAAtBkRgOMEG9tSDYUigfcl_lpf-U1vfs14ewmkB-sdFAelTMHlpaor9UZWoWmAbxwILHvdhkjkZoWwVQ6vAGzha7U3ixgDoCzAROFNk47RlcA6hyorLpdUworgILO7pCBC6ODBFYr8McPC8JR5nJ4P3ZLbQdZa8IBkiZQpPJ6zG1RvdOQazX2yfKkHLDjM30_Grf4Z_vQh2l79BrYU">
+<!-- Simulated Location Pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-4 h-4 bg-primary border-2 border-white rounded-full shadow-lg"></div>
+</div>
+</div>
+<!-- Floating Filter Button -->
+<div class="absolute top-4 right-4">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-full shadow-xl active:scale-95 transition-all font-label-caps">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+<span class="">Filter Areas</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Service Centers Section -->
+<section class="flex flex-col gap-md">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-title-md text-title-md text-on-background">Service Centers Near You</h2>
+<button class="text-primary font-label-caps hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Service Center 1 -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex flex-col gap-sm shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-[16px]">Precision Auto Cairo</h4>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-amber-500 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant font-label-caps">4.8 (120 reviews)</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant font-label-caps">1.2 km</span>
+</div>
+</div>
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold text-primary-container">OPEN</span>
+</div>
+<div class="flex gap-xs flex-wrap">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container text-on-secondary-container text-[11px] font-semibold">Tires</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container text-on-secondary-container text-[11px] font-semibold">Oil Change</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container text-on-secondary-container text-[11px] font-semibold">Engine Repair</span>
+</div>
+</div>
+<!-- Service Center 2 -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex flex-col gap-sm shadow-sm opacity-90">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-[16px]">Elite German Motors</h4>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-amber-500 text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant font-label-caps">4.9 (85 reviews)</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant font-label-caps">3.5 km</span>
+</div>
+</div>
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold text-primary-container">OPEN</span>
+</div>
+<div class="flex gap-xs flex-wrap">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container text-on-secondary-container text-[11px] font-semibold">Diagnostics</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-container text-on-secondary-container text-[11px] font-semibold">Brakes</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/20 shadow-lg"><a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="car_repair">car_repair</span>
+<span class="font-label-caps text-label-caps">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-label-caps text-label-caps">Garage</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-label-caps">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a></nav>
+<!-- Area Filter Modal (Hidden by Default) -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm hidden flex items-end" id="filterModal">
+<div class="w-full bg-surface rounded-t-[2rem] p-lg flex flex-col gap-lg shadow-2xl animate-slide-up">
+<div class="w-12 h-1 bg-outline-variant/50 rounded-full mx-auto"></div>
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">Filter Areas</h3>
+<button class="material-symbols-outlined text-on-background" onclick="toggleFilter()">close</button>
+</div>
+<div class="flex flex-col gap-md">
+<p class="font-label-caps text-secondary uppercase">Cairo Districts</p>
+<div class="grid grid-cols-2 gap-sm">
+<label class="flex items-center gap-sm p-md border border-outline-variant/30 rounded-xl cursor-pointer has-[:checked]:bg-primary-fixed">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant/50" type="checkbox">
+<span class="font-body-sm">Maadi</span>
+</label>
+<label class="flex items-center gap-sm p-md border border-outline-variant/30 rounded-xl cursor-pointer has-[:checked]:bg-primary-fixed">
+<input class="rounded text-primary focus:ring-primary border-outline-variant/50" type="checkbox">
+<span class="font-body-sm">Zamalek</span>
+</label>
+<label class="flex items-center gap-sm p-md border border-outline-variant/30 rounded-xl cursor-pointer has-[:checked]:bg-primary-fixed">
+<input class="rounded text-primary focus:ring-primary border-outline-variant/50" type="checkbox">
+<span class="font-body-sm">New Cairo</span>
+</label>
+<label class="flex items-center gap-sm p-md border border-outline-variant/30 rounded-xl cursor-pointer has-[:checked]:bg-primary-fixed">
+<input class="rounded text-primary focus:ring-primary border-outline-variant/50" type="checkbox">
+<span class="font-body-sm">Nasr City</span>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-title-md shadow-lg active:scale-95 transition-transform" onclick="toggleFilter()">
+                Apply Filters
+            </button>
+</div>
+</div>
+<script>
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if(modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        // Add event listener to filter button
+        document.querySelector('button.bg-primary.text-on-primary').addEventListener('click', toggleFilter);
+    </script>
+<style>
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.3s ease-out;
+        }
+    </style>
+<button aria-label="Add Service" class="fixed bottom-24 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-[100] active:scale-90 transition-transform hover:shadow-primary/20 hover:shadow-lg">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;">add</span>
+</button>
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration></body></html>

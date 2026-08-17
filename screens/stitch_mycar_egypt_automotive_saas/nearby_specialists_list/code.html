@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nearby Specialists - MyCar Egypt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-fixed": "#340735",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-primary-fixed": "#131b2e",
+                        "on-background": "#0b1c30",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#d5e3fd",
+                        "surface-container": "#e5eeff",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary-container": "#57657b",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "tertiary-container": "#340735",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffd6f7",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#515f74",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-low": "#eff4ff",
+                        "outline": "#76777d",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-tertiary-container": "#a971a4",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bec6e0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "40px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-24" data-new-gr-c-s-check-loaded="14.1299.0" data-gr-ext-installed="">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 z-50 flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyfr4d6OHsLSPeW5w_4tA9ti_Wx4EMjhiboiVCCZnQr3BHCjSpTeXp_32R-8-dbuu49OnMVweJ3ypKMQg69emGLPK-3-6J7R6__zopkpadfmT2ttDDVrpZPEsPN9CSZchG8kUrHkxI_WAetm1HEmAL5ib8PkQrKgrOkJgo0rHxgqAQiGimVEhLMGXsJLTAEuM1UY6k8lpfUdKvLfm03ijUSGNzyR47zwSk-C0mYzKd9EPtF7GzSFP07YgQNKzEYij0T8YlWDRrSNI">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">MyCar Egypt</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-md space-y-md">
+<!-- Search Bar Section -->
+<section class="relative">
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-md h-12 shadow-sm focus-within:ring-2 ring-primary-fixed">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-lg ml-2 placeholder:text-outline/60" placeholder="Search workshops or services..." type="text">
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="tune">tune</span>
+</div>
+</section>
+<!-- Category Filter Chips -->
+<section class="flex gap-sm overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile py-2">
+<button class="px-lg py-sm rounded-full bg-primary-container text-on-primary whitespace-nowrap font-label-caps text-label-caps active:scale-95 transition-all">All</button>
+<button class="px-lg py-sm rounded-full bg-surface-container border border-outline-variant/30 text-secondary whitespace-nowrap font-label-caps text-label-caps hover:bg-surface-container-high active:scale-95 transition-all">Maintenance</button>
+<button class="px-lg py-sm rounded-full bg-surface-container border border-outline-variant/30 text-secondary whitespace-nowrap font-label-caps text-label-caps hover:bg-surface-container-high active:scale-95 transition-all">Tires</button>
+<button class="px-lg py-sm rounded-full bg-surface-container border border-outline-variant/30 text-secondary whitespace-nowrap font-label-caps text-label-caps hover:bg-surface-container-high active:scale-95 transition-all">Body Work</button>
+<button class="px-lg py-sm rounded-full bg-surface-container border border-outline-variant/30 text-secondary whitespace-nowrap font-label-caps text-label-caps hover:bg-surface-container-high active:scale-95 transition-all">Oil Change</button>
+</section>
+<!-- Specialized Map Teaser (Premium Visual Accent) -->
+<section class="w-full h-32 rounded-xl overflow-hidden relative shadow-md">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="A detailed, high-contrast digital map interface showing the metropolitan area of Cairo, Egypt. The map features a minimalist dark mode aesthetic with glowing blue pathways and pinpoint markers highlighting automotive service centers. The overall look is professional, technical, and sophisticated, mirroring a luxury vehicle's high-end GPS navigation system with clean lines and premium data visualization." data-location="Cairo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApk6rzVPg7xj3mhv6nHvJWuUBDYbjDIKBpVOPExnG86_gjVNG74wTnIYB56605xCUNM9LZBMdkHeoyYZ17HP8gxItrNgtAWCj4TxK1tDGzYugmeyUPl5n0gZyUvWugtensO47fupQvTeJj_2mwNIMcsqC1eNlOvh47YUFYP-dAQXU7scFSk2lw4pbwEavZaH0H4i6xKa30u477tl9SlSlGTyJrTwX000FSyt3VS7jYzDZqtfXjulVoNqiu3dCQNypHUyw3w2NJXEY">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-md">
+<p class="text-white font-title-md text-title-md flex items-center gap-2">
+<span class="material-symbols-outlined text-white" data-icon="my_location">my_location</span>
+                    Specialists near New Cairo
+                </p>
+</div>
+</section>
+<!-- Specialists List -->
+<div class="space-y-md">
+<!-- Specialist Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-40">
+<img class="w-full h-full object-cover" data-alt="An immaculate, brightly lit high-end automotive workshop specializing in German engineering. Several luxury vehicles, including a sleek silver Mercedes-Benz, are parked in pristine service bays with polished grey floors. The environment is clinical and professional, featuring modern diagnostic equipment, tool chests in deep blue, and bright overhead LED panels creating a sophisticated, high-performance maintenance atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD3PqdAqty9HY_W8sjdLcoMhYLY9cai8MHBVmUl_10nGg9DT26zMCPeFPKwEgy2kGnQPHJIbJuHQcKOQMMhUlv5069dblSWFWMounivuweJ3B6J7IskHXogKAjmc-Zec6SigVr2IVSyxrfusShRNMk8ydpm_dB_UN_VgdwFa1MW78x6Ku47Cy_ZfSCOb7SiVmp0Vkw2JSqKf89Sv2KeCZkvxFD2GoYaDUhTPFKAivrzh27q-1w-m5DpJnxSKj3XvPWAK0QTxUULnE">
+<div class="absolute top-sm right-sm bg-primary-container text-white px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-caps text-[10px] uppercase">Verified Specialist</span>
+</div>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Elite German Auto</h3>
+<div class="flex gap-sm mt-base">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">Mercedes Specialist</span>
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">Audi</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.8</span>
+<span class="text-outline text-[12px]">(124)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<p class="text-body-sm">Ring Road, 5th Settlement • 2.4 km away</p>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm">
+<button class="flex items-center justify-center gap-2 h-10 border border-outline-variant/50 rounded-lg text-secondary font-semibold hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="">Call</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 bg-primary-container text-white rounded-lg font-semibold hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="directions">directions</span>
+<span class="">Route</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Specialist Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-40">
+<img class="w-full h-full object-cover" data-alt="A professional tire service center with rows of high-performance tires displayed on minimalist black racking systems. The lighting is crisp and cool, casting soft shadows on the dark industrial flooring. A modern tire-changing machine sits in the center, reflecting the high-tech, precise nature of the facility. The color palette is dominated by charcoal grays, muted blues, and metallic silvers, evoking a sense of engineering excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC18CbmmIxEoonCP_saUhC8u70WGaSvIJey401nob-FfeEt1uub7g_R5_codpP1qr5XNUqYXOGCFA7elrLWwPhhq-GyiHLzvlD54kvbTR3mvN03b9ETLE6ap87zNZImjJ4Lb1ZTD5XmvByu0KJvCRQPFvrXzgIii-6QqK2lLXZsSPluI_ojIJslxQ_zZ-bYGe5MWtemlzWKOY7W8QK0SopAG5f7bdfaCvvu7vaEAVNCouGL_oINkNAE-Rc09pAhSybkD37koDT846U">
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Tire Hub Cairo</h3>
+<div class="flex gap-sm mt-base">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">Suspension</span>
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">Tires</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.5</span>
+<span class="text-outline text-[12px]">(89)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<p class="text-body-sm">El-Nozha St, Heliopolis • 5.1 km away</p>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm">
+<button class="flex items-center justify-center gap-2 h-10 border border-outline-variant/50 rounded-lg text-secondary font-semibold hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="">Call</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 bg-primary-container text-white rounded-lg font-semibold hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="directions">directions</span>
+<span class="">Route</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Specialist Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-40">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern BMW service center with a high-ceilinged interior and floor-to-ceiling windows. The diagnostic area is equipped with integrated computer workstations and wall-mounted screens showing technical schematics. The atmosphere is quiet and professional, with a focus on high-technology and precision craftsmanship. Subtle blue ambient lighting highlights the clean architectural lines of the service area." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA10KPGiEdcgTnCd94tiZXK04GGCdqyVm-B5zDCITvxPnPkWcWl2dboDuEfgPPqQd4J5SbxcgEJv5mXOtYdNggBuNKSvRdKZinqwJBKeE1uTnoQh67z-6vSTiAJyasZ_hrvnKIvPzqeZxTu2-5zIdSvseSPBoGz78YAaZaqOAxlt4NHi-UVEnDs7jBw6l4_HuriBGu2r0D9l0paQOcXwjYFFg-SfHnE3fOzp2nuR3cd5dgCYE9LoDutP9itxQS7VzfcYQZFc88V2XM">
+<div class="absolute top-sm right-sm bg-primary-container text-white px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-caps text-[10px] uppercase">Verified Specialist</span>
+</div>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Bavarian Service Center</h3>
+<div class="flex gap-sm mt-base">
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">BMW Specialist</span>
+<span class="bg-secondary-container/50 text-on-secondary-container px-2 py-0.5 rounded text-[11px] font-semibold">Engine Repair</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.9</span>
+<span class="text-outline text-[12px]">(210)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<p class="text-body-sm">Industrial Zone, Obour City • 12.8 km away</p>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-sm">
+<button class="flex items-center justify-center gap-2 h-10 border border-outline-variant/50 rounded-lg text-secondary font-semibold hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="">Call</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 bg-primary-container text-white rounded-lg font-semibold hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="directions">directions</span>
+<span class="">Route</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/20 shadow-lg"><a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#"><span class="material-symbols-outlined" data-icon="car_repair">car_repair</span><span class="font-label-caps text-label-caps">Services</span></a><a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#"><span class="material-symbols-outlined" data-icon="directions_car">directions_car</span><span class="font-label-caps text-label-caps">Garage</span></a><a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#"><span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span><span class="font-label-caps text-label-caps">Records</span></a><a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#"><span class="material-symbols-outlined" data-icon="payments">payments</span><span class="font-label-caps text-label-caps">Expenses</span></a><a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:opacity-80 transition-opacity active:scale-90 transition-all duration-200" href="#"><span class="material-symbols-outlined" data-icon="person">person</span><span class="font-label-caps text-label-caps">Profile</span></a></nav>
+<script>
+        // Simple micro-interaction for filter buttons
+        document.querySelectorAll('section.overflow-x-auto button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Reset others
+                document.querySelectorAll('section.overflow-x-auto button').forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary');
+                    b.classList.add('bg-surface-container', 'text-secondary');
+                });
+                // Activate clicked
+                button.classList.add('bg-primary-container', 'text-on-primary');
+                button.classList.remove('bg-surface-container', 'text-secondary');
+            });
+        });
+    </script>
+
+
+
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration>
+
+</body></html>

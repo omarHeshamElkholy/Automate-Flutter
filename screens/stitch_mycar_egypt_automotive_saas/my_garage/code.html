@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MyCar Egypt - Garage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-secondary-container": "#57657b",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "tertiary-fixed": "#ffd6f7",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed": "#340735",
+                        "inverse-surface": "#213145",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "outline": "#76777d",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#515f74",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#a971a4",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "primary-container": "#131b2e",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "secondary-container": "#d5e3fd",
+                        "tertiary-container": "#340735",
+                        "surface-container-high": "#dce9ff",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "surface-container": "#e5eeff",
+                        "on-surface-variant": "#45464d",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xl": "40px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "base": "4px"
+                    },
+                    fontFamily: {
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    fontSize: {
+                        "title-md": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 md:pl-[280px] font-body-lg text-body-lg">
+<!-- TopAppBar (Mobile) / Fixed Top Bar -->
+<header class="md:hidden bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile w-full h-16 docked full-width top-0 sticky z-40">
+<div class="flex items-center gap-sm">
+<img alt="User profile avatar" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP-jCviwQ5fWEIvOKZwrZOutYql45qy-9IyY0TM7hBzxd5X0yamFH19K5TGIAOBP9pbb2RME9eXkI71dGyFalm0224ijr4BP7wvc08zj_tZHC7pAbYsvuYC3ODV5LYyi6XaBL_iwASHZRKQSZFCkdN7MW4f4E6XXU_FXfmA4ZsH28MwJR9s16znyRPnUX3Gec2EdwsMHmDY_Y0lZJEMGgkfA915fiNEsb5xcpwnUXMsPjverTQkaemcB7xjdTmAGWWEcE7MyZMUOY">
+<span class="text-title-md font-title-md font-bold text-on-surface">MyCar Egypt</span>
+</div>
+<button class="text-primary hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col h-full py-xl gap-sm bg-surface-container-low fixed left-0 top-0 w-[280px] border-r border-outline-variant/50 z-40 px-lg">
+<div class="mb-lg px-sm">
+<span class="text-headline-lg font-headline-lg font-black tracking-tighter text-primary">MyCar Egypt</span>
+</div>
+<div class="flex items-center gap-md mb-xl px-sm">
+<img alt="User profile photo" class="w-12 h-12 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGEzArLjmVoYnE89LDFKtJxhhmXEoU4qz4ET8oFFGjNuRFv65aE3QQwc17Z9iDBt90NXKHQD84uwILLGrIpSQR_ODRTTrLyS_QY2VRnKxdE2pZk-NKWLIw_WgMonyFm8M4pszvgjHeGllIP7AVN01YI0jVx0g7MjbbKe_MPMUqNlznjNqTnUgWAIbRSoHj3ZLgDPKp2YNvqzsETgidY2my9JJsoeIYLvbgkour0_TCOCjSsYJoBmGfWBX3KWziE_JfY75cRM9ejDY">
+<div>
+<div class="text-title-md font-title-md text-on-surface">Ahmed Mansour</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Premium Member • Cairo, EG</div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined fill" data-icon="minor_crash">minor_crash</span>
+                Garage
+            </a>
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                History
+            </a>
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                Expenses
+            </a>
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+                Reminders
+            </a>
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                Notifications
+            </a>
+<a class="flex items-center gap-md text-secondary px-lg py-sm rounded-full hover:bg-surface-container-high transition-all active:translate-x-1 duration-200 text-body-lg font-body-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Profile
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="p-margin-mobile md:p-margin-desktop max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface">My Garage</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Manage your registered fleet and personal vehicles.</p>
+</div>
+<button class="hidden md:flex items-center gap-sm bg-primary text-on-primary px-4 py-2 rounded-lg text-body-sm font-title-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Add Vehicle
+            </button>
+</div>
+<!-- Vehicle Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md">
+<!-- Vehicle Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer relative">
+<div class="absolute top-sm right-sm z-10 flex gap-xs">
+<span class="bg-surface/80 backdrop-blur-sm text-on-surface px-2 py-1 rounded-sm text-label-caps font-label-caps border border-outline-variant/30">Active</span>
+</div>
+<div class="h-48 w-full bg-surface-container relative overflow-hidden">
+<img alt="BMW 5 Series" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, modern silver luxury sedan parked in a pristine, minimalist concrete studio space with dramatic, high-contrast overhead studio lighting emphasizing the vehicle's sharp body lines. The setting is clean, corporate, and highly professional, reflecting a premium automotive aesthetic with a color palette of metallic grays, deep blacks, and subtle cool white reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMKdXU6BCMC4MVQUIyYB1Q5k5vX2PcPBjTfFpvrsV5Mfoh2PJyWCG2hCVdNh2yG166utYDNzkB_f3H2wx4in7iEDPnGzBw1BrKqgD7fKlvn_KH3aySe0SVuqAtibs-AcuJ7qaUbh8uXMMYYD-qXKNVdSN0jbPiOsrr2froqdKhTF__8zV3Q0koRV4B-hEg8RVGjblhZycCD8-jyrUcwLc_PQm5l2Q9972_EUy1Dk3KiiGMbknqCxousBexLbjM6UoFTgSm0kV5f1Q">
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="text-title-md font-title-md text-on-surface">BMW 5 Series</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">2023 • 530i Luxury Line</p>
+</div>
+<img alt="BMW Logo" class="w-8 h-8 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP3rphYyEPbf9cl-uKaYk7ttVOmwv48HFViPFds2MXdeQ9mJMahSH4VNGrlgJK004A1MR3axBUaXee_Izq5VKIEszhHEx8J7jg07oxyX3INBfcQYfj6eP9OkByE90BqY2Twr2sYHLegd-vkeUdnKS-QOQl_epwqEaZZKUlJzhxnyO6VajALRlK6sTlgCbj8dsiOvP5XCfQQU2U7g1MQWl3lgiulLMszAjoEMCVkt-VH-dYav1_iubxnq2qvXg6oxD72C2CYsI-zPM">
+</div>
+<div class="grid grid-cols-2 gap-sm mt-md pt-md border-t border-outline-variant/20">
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1">MILEAGE</p>
+<p class="text-body-lg font-body-lg text-on-surface font-medium">12,450 km</p>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1">PLATE</p>
+<p class="text-body-lg font-body-lg text-on-surface font-medium">أ ب ج ١٢٣</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer relative">
+<div class="absolute top-sm right-sm z-10 flex gap-xs">
+<span class="bg-surface/80 backdrop-blur-sm text-on-surface px-2 py-1 rounded-sm text-label-caps font-label-caps border border-outline-variant/30">Service Due</span>
+</div>
+<div class="h-48 w-full bg-surface-container relative overflow-hidden">
+<img alt="Toyota Land Cruiser" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A commanding white SUV positioned on a clean, light-grey polished floor in a modern architectural showroom. Bright, diffuse lighting highlights the vehicle's robust design and premium finish. The overall mood is authoritative and dependable, utilizing a corporate light-mode palette of whites, soft greys, and deep window tints." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7dq0uSuQjuMSsZQbacbIBC8osjSxyFZhXuksOGPrj90he9NViFXHTGHVdVfTq31qKIRV8OH9VknHiAqNwcH7j930EMt27gBm-d13BLF3XuzglhcP9RF_-5Ahv9rKPhrLs1AnLFnzfLTw3doO1tnwarFfdfMSjnPmCchjIKq0TM-UNkty_0-8POCUgrYJ81LZaqIVnA_c52HSVvfg6DRypv8rcZGvQ4tCwoPhXDM4r5l0gH7-KPPntbs_MEBP4DSSLP6S02loPH2c">
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="text-title-md font-title-md text-on-surface">Toyota Land Cruiser</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">2022 • VXR 3.5L</p>
+</div>
+<img alt="Toyota Logo" class="w-8 h-8 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3KC_JBYm8CUDMK_3ThOVTLrgnPGTRa7oyjDrCM-b-ssPRcUW_tzKbtHWtaE13qpcEtvt3sN1WvSHX86TYQSwmmHhATBVa0bq2thpXftGJ1JSEgSKRa9GxT8vmeKQUNQ9COJ-wZaCUsedFWry4LyS5n44XDFzd-2TkBCXHKsqb5CIcGLT1TYbMS8ymTF7ghu2mWYVS2nYLveVDwXVUbYQIeDFDEX3FXUUCD7CqwJJfkVI1TjbmSOxSUolsl2h0md389bBXFWhJ63k">
+</div>
+<div class="grid grid-cols-2 gap-sm mt-md pt-md border-t border-outline-variant/20">
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1">MILEAGE</p>
+<p class="text-body-lg font-body-lg text-on-surface font-medium text-error">45,200 km</p>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1">PLATE</p>
+<p class="text-body-lg font-body-lg text-on-surface font-medium">س ي ر ٩٨٧</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Add New (Visible on Desktop as part of grid) -->
+<div class="hidden md:flex flex-col items-center justify-center bg-surface border border-dashed border-outline-variant rounded-xl p-lg min-h-[300px] hover:bg-surface-container-lowest hover:border-primary transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-md group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary transition-colors" data-icon="add">add</span>
+</div>
+<h3 class="text-title-md font-title-md text-on-surface mb-xs">Register Vehicle</h3>
+<p class="text-body-sm font-body-sm text-center text-on-surface-variant max-w-[200px]">Add a new car to your fleet to track expenses and maintenance.</p>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Mobile Only) -->
+<button class="md:hidden fixed bottom-24 right-4 z-40 bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-surface/80 backdrop-blur-xl border-t border-outline-variant/30 fixed bottom-0 w-full flex justify-around items-center py-2 pb-safe px-2 docked full-width z-50 shadow-lg"><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home_repair_service">home_repair_service</span>
+<span class="text-label-caps font-label-caps">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:opacity-80 active:scale-90 transition-all duration-150 p-2" href="#">
+<span class="material-symbols-outlined fill mb-1" data-icon="directions_car">directions_car</span>
+<span class="text-label-caps font-label-caps">Garage</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="text-label-caps font-label-caps">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span class="text-label-caps font-label-caps">Expenses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a></nav>
+
+
+</body></html>

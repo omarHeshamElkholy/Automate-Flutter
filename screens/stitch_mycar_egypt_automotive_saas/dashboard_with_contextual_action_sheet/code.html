@@ -1,0 +1,327 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>MyCar Egypt - Fleet Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#d5e3fd",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary-fixed-dim": "#f1b2ea",
+                        "on-surface": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "tertiary-container": "#340735",
+                        "on-tertiary-fixed-variant": "#663564",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-background": "#0b1c30",
+                        "inverse-on-surface": "#eaf1ff",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-primary-container": "#7c839b",
+                        "surface-container-high": "#dce9ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffd6f7",
+                        "surface-bright": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#515f74",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#a971a4",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-container": "#57657b",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed": "#340735",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "outline": "#76777d",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#eff4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "32px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        
+        /* Bottom Sheet Transition */
+        #actionSheet {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        #actionSheet.open {
+            transform: translateY(0);
+        }
+        #scrim {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #scrim.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+
+  </head>
+<body class="bg-background text-on-background font-body-lg overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile w-full h-16">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline/10">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqRM_d4ydJPc3qs5GIg4D5fgV9qPZUghPyqmWrGWi6IqL2mR-cJLBZan4CBnRsBGGqDMstcAl9dYWtBpAjlOnpJagZ5PjROTrGn8Pe1geFx2KgEOgHAj9WeazHT0K8wf_74wXxhZVbIst-swd6hLnOCg_VmSMGaChdZGECvBB7JSKWsN3OKAkCynfKtUFAW1xGOfWyXqS_5uwQs4ZDlbZtw_-7_Hz_nfX7M4aeN5t60i4vD-ZsYsK1mVsJ0TcXN3paDKBkN-oNaQ">
+</div>
+<h1 class="text-title-md font-title-md font-bold text-on-surface">MyCar Egypt</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-200 text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-lg max-w-7xl mx-auto pb-lg">
+<!-- Dashboard Summary Bento -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md mb-xl">
+<div class="col-span-2 p-lg bg-surface-container-low rounded-xl border border-outline-variant/30 flex flex-col justify-between h-48 relative overflow-hidden">
+<div class="z-10">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase">Fleet Health</p>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-primary mt-xs">98.4%</h2>
+</div>
+<div class="z-10 flex items-center text-body-sm font-body-sm text-on-tertiary-container gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="">+2.1% from last month</span>
+</div>
+<!-- Technical line graphic placeholder -->
+<div class="absolute bottom-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0,80 L20,75 L40,85 L60,40 L80,50 L100,20" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="p-lg bg-white rounded-xl border border-outline-variant/30 flex flex-col justify-between h-48">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">MONTHLY COST</p>
+<h3 class="text-title-md font-title-md text-primary">EGP 12,450</h3>
+</div>
+</div>
+<div class="p-lg bg-white rounded-xl border border-outline-variant/30 flex flex-col justify-between h-48">
+<span class="material-symbols-outlined text-primary" data-icon="build">build</span>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">DUE SERVICE</p>
+<h3 class="text-title-md font-title-md text-primary">4 Vehicles</h3>
+</div>
+</div>
+</section>
+<!-- Fleet List -->
+<section>
+<div class="flex justify-between items-end mb-md">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile font-bold tracking-tight text-on-surface">Your Fleet</h2>
+<button class="flex items-center gap-xs px-md py-2 bg-primary text-on-primary rounded-full text-label-caps font-label-caps hover:opacity-80 active:scale-95 transition-all duration-200">
+  <span class="material-symbols-outlined text-[18px]">add</span>
+  <span class="">ADD FLEET</span>
+</button>
+</div>
+<div class="space-y-sm"><div class="group relative bg-white rounded-xl border border-outline-variant/30 p-md flex items-center gap-md hover:bg-surface-container-low transition-all cursor-pointer overflow-hidden active:scale-[0.98]" onclick="openActions('Mercedes-Benz C300', 'EGP 2.8M • 45,200 km')"><div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0"><img class="w-full h-full object-cover" alt="Mercedes-Benz C300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGObUmDLCy8VInQ3-ZpNxmxrp0gZGHxsHtSEM4qSIpguvkvjCX-BNHSorgIBtXOqIhmhYbK38v2oYq7h-4PbCZn2r780oWA_eeK1VzNOqI-QubMz5ZMHJZR5fLZ7cGBBPRolEsLcnw0KHRbZ1RRmoA89wwj9W3iPSqCd68RP6tP_3hGHy04cAcvM3PqRHmcLLA-wP0hcG5LcwtBwHh4_S3IUKQl8dg8vsHPL3o3I46x1j5584-3Rns22bLgP6n393qVy9ANTZS6r4"></div><div class="flex-grow"><h4 class="text-title-md font-title-md text-on-surface">Mercedes-Benz C300</h4><p class="text-body-sm font-body-sm text-on-surface-variant">White • ABC-123 • 45,200 km</p><div class="mt-xs flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="text-label-caps font-label-caps text-on-surface-variant">ACTIVE</span></div></div><div class="h-full absolute right-0 top-0 w-8 bg-secondary-container/20 border-l border-outline-variant/20 flex items-center justify-center group-hover:bg-secondary-container/40 transition-colors"><span class="material-symbols-outlined text-primary text-lg">add</span></div></div>
+<!-- Vehicle Card: Toyota Corolla -->
+<div class="group relative bg-white rounded-xl border border-outline-variant/30 p-md flex items-center gap-md hover:bg-surface-container-low transition-all cursor-pointer overflow-hidden active:scale-[0.98]" onclick="openActions('Toyota Corolla', 'EGP 1.2M • 24,000 km')">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A side view of a modern white Toyota Corolla parked in a bright, high-end automotive showroom. The lighting is crisp and professional, highlighting the car's sleek lines. The background is a minimalist corporate setting with soft grey tones and polished concrete floors. The overall aesthetic is clean, premium, and modern light-mode consistent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv6MSbcVpLW6RtJ_63mMeni3uKt6gK2tHBPO8bEfeulkhN6djbMwc4wuUMZmweMh0S1p9Lv67YfGu2tHEOdpljB7IFiOC57UzM3hcHkmx6Zob1ogz--UPbp8mDDTh-YI1yzV8uCFmjam2E6iPJu_D9XnI_vutCQ6xNrXJ-FXdIO9DxCL5ro1ioUdQ_M7ufj6bF6KRRZdjwrufLCOlAam-jzdaPCeU0Cs60pf0Zpg4zE5iiazZlaOd9cUVXRZivER_B4o_ouTV4wDk">
+</div>
+<div class="flex-grow">
+<h4 class="text-title-md font-title-md text-on-surface">Toyota Corolla</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">White • ABC-1234 • 24,000 km</p>
+<div class="mt-xs flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant">ACTIVE</span>
+</div>
+</div>
+<!-- Interaction Indicator -->
+<div class="h-full absolute right-0 top-0 w-8 bg-secondary-container/20 border-l border-outline-variant/20 flex items-center justify-center group-hover:bg-secondary-container/40 transition-colors">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="add">add</span>
+</div>
+</div>
+<!-- Vehicle Card: BMW X5 -->
+<div class="group relative bg-white rounded-xl border border-outline-variant/30 p-md flex items-center gap-md hover:bg-surface-container-low transition-all cursor-pointer overflow-hidden active:scale-[0.98]" onclick="openActions('BMW X5', 'EGP 4.5M • 12,500 km')">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A luxurious dark grey BMW X5 SUV positioned in a modern architectural driveway. High-contrast lighting captures the metallic finish and sharp engineering details. The environment is sophisticated and professional, featuring clean lines and expensive textures. The mood is authoritative and high-performance, fitting a premium corporate automotive brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6_B_RnZ-KZbSgm-0ti__YnOyWau-UL80oNZR060MlQYcq-BsnIhTxelWQiw9HUHT2c9-ciWS2slQZvr-PtRCRkGwbMZmswpVvKjH3OCTQjYmxZ3oUlDw51htTQbt6Aw54rFjoV-841bEGqgU4YgaS9uyGyA_N19hKrYGOy28d6CATOARxnd_lE2aLkQXuglNAFfWL72mazZQPI0c7_FnM79gvChTqSeuzB-aUi1lAgm6jOAVjxmeMyN2v4ISBahZAtw19iyR-pj8">
+</div>
+<div class="flex-grow">
+<h4 class="text-title-md font-title-md text-on-surface">BMW X5</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Black • XYZ-9876 • 12,500 km</p>
+<div class="mt-xs flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-orange-400"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant">DUE SERVICE</span>
+</div>
+</div>
+<!-- Interaction Indicator -->
+<div class="h-full absolute right-0 top-0 w-8 bg-secondary-container/20 border-l border-outline-variant/20 flex items-center justify-center group-hover:bg-secondary-container/40 transition-colors">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="add">add</span>
+</div>
+</div>
+<!-- Vehicle Card: Hyundai Tucson -->
+<div class="group relative bg-white rounded-xl border border-outline-variant/30 p-md flex items-center gap-md hover:bg-surface-container-low transition-all cursor-pointer overflow-hidden active:scale-[0.98]" onclick="openActions('Hyundai Tucson', 'EGP 1.8M • 42,000 km')">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A modern silver Hyundai Tucson SUV parked in a minimalist urban setting. Soft daylight creates a clean, airy feeling. The visual style is contemporary and professional, focusing on reliability and precision. The vehicle is presented with a corporate aesthetic, emphasizing clarity and high-quality craftsmanship suitable for a fleet management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGXj05K-SEMU_U5ArN-Kqqwknf8XZlfUfMi8FatWDGOYxcmItazDvE5wMCvOn7NkGB_Tls9RT3V1u-i_DzqG_VOl0TjevwI28Ri2_ps2hOTKBqiW4l3zakdwXzGt4t9PxBk9wqauCrhIf2Dm-CxZfDQU3Aqd2lNr8zZEi_MLN9cELKh3FcFPG-z3ExDBcURnFLcxjJF2QWFs9-VQ03dIFdb_JxdlohFLNP3VijcKIFHjwDffEd_fYE5dVWzxeBv1eETpwj4vTy_s">
+</div>
+<div class="flex-grow">
+<h4 class="text-title-md font-title-md text-on-surface">Hyundai Tucson</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Silver • BCD-4321 • 42,000 km</p>
+<div class="mt-xs flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant">ACTIVE</span>
+</div>
+</div>
+<!-- Interaction Indicator -->
+<div class="h-full absolute right-0 top-0 w-8 bg-secondary-container/20 border-l border-outline-variant/20 flex items-center justify-center group-hover:bg-secondary-container/40 transition-colors">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="add">add</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Scrim -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-[60]" id="scrim" onclick="closeActions()"></div>
+<!-- Quick Action Bottom Sheet -->
+<div class="fixed bottom-0 left-0 right-0 z-[70] bg-white rounded-t-[32px] shadow-2xl safe-bottom border-t border-outline-variant/30" id="actionSheet">
+<div class="w-full flex justify-center py-sm">
+<div class="w-12 h-1.5 rounded-full bg-outline-variant/50"></div>
+</div>
+<div class="px-margin-mobile pb-lg pt-sm">
+<div class="mb-lg">
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface font-bold" id="selectedCarName">Hyundai Tucson</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant" id="selectedCarDetails">EGP 1.8M • 42,000 km</p>
+</div>
+<div class="grid grid-cols-1 gap-sm">
+<button class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-secondary-container transition-all text-left">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Add Service</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant">Log maintenance or repair</p>
+</div>
+</button>
+<button class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-secondary-container transition-all text-left">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Log Expense</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant">Fuel, insurance, or taxes</p>
+</div>
+</button>
+<button class="flex items-center gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-secondary-container transition-all text-left">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Update Mileage</p>
+<p class="text-label-caps font-label-caps text-on-surface-variant">Enter current odometer reading</p>
+</div>
+</button>
+</div>
+<button class="mt-lg w-full py-md text-primary font-bold hover:bg-surface-container-highest rounded-xl transition-all" onclick="closeActions()">Cancel</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 pb-safe px-2 bg-surface/80 backdrop-blur-xl border-t border-outline-variant/30 shadow-lg z-50 left-0"><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#"><span class="material-symbols-outlined">build</span><span class="text-label-caps font-label-caps">Services</span></a><a class="flex flex-col items-center justify-center text-primary font-bold hover:opacity-80 active:scale-90 transition-all duration-150" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_car</span><span class="text-label-caps font-label-caps">Garage</span></a><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#"><span class="material-symbols-outlined">description</span><span class="text-label-caps font-label-caps">Records</span></a><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#"><span class="material-symbols-outlined">payments</span><span class="text-label-caps font-label-caps">Expenses</span></a><a class="flex flex-col items-center justify-center text-on-secondary-container hover:opacity-80 active:scale-90 transition-all duration-150" href="#"><span class="material-symbols-outlined">person</span><span class="text-label-caps font-label-caps">Profile</span></a></nav>
+<script>
+        function openActions(name, details) {
+            document.getElementById('selectedCarName').textContent = name;
+            document.getElementById('selectedCarDetails').textContent = details;
+            document.getElementById('actionSheet').classList.add('open');
+            document.getElementById('scrim').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeActions() {
+            document.getElementById('actionSheet').classList.remove('open');
+            document.getElementById('scrim').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeActions();
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body></html>
