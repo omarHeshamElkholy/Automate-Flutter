@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+import '../models/service_center.dart';
+
+class ServiceCenterDetailsScreen extends StatelessWidget {
+  final ServiceCenter serviceCenter;
+
+  const ServiceCenterDetailsScreen({super.key, required this.serviceCenter});
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isVerified = serviceCenter.type == 'AUTHORIZED';
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(serviceCenter.name, style: const TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold)),
+        iconTheme: const IconThemeData(color: Color(0xFF0F172A)),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF8FAFC),
+                borderRadius: BorderRadius.circular(12),
+                image: const DecorationImage(
+                  image: NetworkImage('https://images.unsplash.com/photo-1520340356584-f9917d1e5113?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    serviceCenter.name,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                  ),
+                ),
+                if (isVerified)
+                  const Icon(Icons.verified, color: Colors.blue, size: 28),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE5EEFF),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(serviceCenter.type.replaceAll('_', ' '), style: const TextStyle(fontSize: 12, color: Colors.blue, fontWeight: FontWeight.bold)),
+                ),
+                const SizedBox(width: 12),
+                const Icon(Icons.star, color: Colors.amber, size: 16),
+                const SizedBox(width: 4),
+                const Text('4.8 (120 reviews)', style: TextStyle(color: Color(0xFF515F74), fontSize: 14)),
+              ],
+            ),
+            const SizedBox(height: 24),
+            const Text('Location', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+            const SizedBox(height: 8),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.location_on, color: Color(0xFF64748B), size: 20),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    '${serviceCenter.address}, ${serviceCenter.city}',
+                    style: const TextStyle(fontSize: 14, color: Color(0xFF334155)),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            if (serviceCenter.phone != null) ...[
+              const Text('Contact', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              const SizedBox(height: 8),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.phone, color: Color(0xFF64748B), size: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    serviceCenter.phone!,
+                    style: const TextStyle(fontSize: 14, color: Color(0xFF334155)),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+            ],
+          ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF0F172A),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: const Text('Book Appointment', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+          ),
+        ),
+      ),
+    );
+  }
+}

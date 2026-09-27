@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/specialist_provider.dart';
+import '../models/service_center.dart';
+import 'notifications_screen.dart';
+import 'service_center_details_screen.dart';
+import '../widgets/notification_bell.dart';
 
 class SpecialistsListScreen extends StatefulWidget {
   const SpecialistsListScreen({super.key});
@@ -65,10 +69,7 @@ class _SpecialistsListScreenState extends State<SpecialistsListScreen> {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none, color: Color(0xFF0F172A)),
-            onPressed: () {},
-          ),
+          const NotificationBell(),
         ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(110),
@@ -191,12 +192,21 @@ class _SpecialistsListScreenState extends State<SpecialistsListScreen> {
                 // Specialist Cards
                 ...centers.map((center) => Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
-                  child: _buildSpecialistCard(
-                    title: center.name,
-                    rating: '4.8 (120)', // Static for now
-                    address: '${center.address}, ${center.city}',
-                    tags: [center.type.replaceAll('_', ' ')],
-                    isVerified: center.type == 'AUTHORIZED',
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => ServiceCenterDetailsScreen(serviceCenter: center)),
+                      );
+                    },
+                    child: _buildSpecialistCard(
+                      title: center.name,
+                      rating: '4.8 (120)', // Static for now
+                      address: '${center.address}, ${center.city}',
+                      tags: [center.type.replaceAll('_', ' ')],
+                      isVerified: center.type == 'AUTHORIZED',
+                    ),
                   ),
                 )).toList(),
               ],

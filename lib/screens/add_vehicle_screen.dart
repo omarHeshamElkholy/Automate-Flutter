@@ -173,8 +173,8 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                         validator: (value) {
                           if (value == null || value.isEmpty) return 'Required';
                           final year = int.tryParse(value);
-                          if (year == null || year < 1900 || year > DateTime.now().year + 1) {
-                            return 'Enter a valid year';
+                          if (year == null || year < 1980 || year > DateTime.now().year + 1) {
+                            return 'Enter a valid year (1980+)';
                           }
                           return null;
                         },
@@ -196,7 +196,9 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) return 'Required';
-                          if (int.tryParse(value) == null) return 'Must be a number';
+                          final mileage = int.tryParse(value);
+                          if (mileage == null || mileage < 0) return 'Must be a valid positive number';
+                          if (mileage > 999999) return 'Mileage seems too high';
                           return null;
                         },
                       ),

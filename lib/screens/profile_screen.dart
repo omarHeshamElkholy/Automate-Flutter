@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'notifications_screen.dart';
+import '../widgets/notification_bell.dart';
 import '../services/auth_service.dart';
 import 'placeholder_screen.dart';
 
@@ -22,10 +24,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none, color: Color(0xFF0F172A)),
-            onPressed: () {},
-          ),
+          const NotificationBell(),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: CircleAvatar(

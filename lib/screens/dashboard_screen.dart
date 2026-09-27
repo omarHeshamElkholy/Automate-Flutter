@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../providers/car_provider.dart';
 import '../providers/specialist_provider.dart';
 import '../models/service_center.dart';
+import 'profile_screen.dart';
+import 'add_vehicle_screen.dart';
+import 'my_garage_screen.dart';
+import 'notifications_screen.dart';
+import '../widgets/notification_bell.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -19,9 +25,17 @@ class DashboardScreen extends StatelessWidget {
         elevation: 0,
         title: Row(
           children: [
-            const CircleAvatar(
-              radius: 16,
-              backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'), // Placeholder profile pic
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                );
+              },
+              child: const CircleAvatar(
+                radius: 16,
+                backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+              ),
             ),
             const SizedBox(width: 12),
             Text(
@@ -35,10 +49,7 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none, color: Color(0xFF0F172A)),
-            onPressed: () {},
-          ),
+          const NotificationBell(),
         ],
       ),
       body: SafeArea(
@@ -117,7 +128,17 @@ class DashboardScreen extends StatelessWidget {
               // Map Widget
               Consumer<SpecialistProvider>(
                 builder: (context, provider, child) {
-                  final mapController = MapController();
+                  Set<Marker> markers = provider.serviceCenters
+                      .where((s) => s.latitude != null && s.longitude != null)
+                      .map((center) {
+                    return Marker(
+                      markerId: MarkerId(center.id),
+                      position: LatLng(center.latitude!, center.longitude!),
+                      onTap: () {
+                        _showSpecialistDetails(context, center);
+                      },
+                    );
+                  }).toSet();
                   
                   return Container(
                     height: 240,
@@ -129,36 +150,21 @@ class DashboardScreen extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(11), // Inner radius
-                      child: FlutterMap(
-                        mapController: mapController,
-                        options: const MapOptions(
-                          initialCenter: LatLng(30.0444, 31.2357), // Default Cairo
-                          initialZoom: 11.0,
-                          interactionOptions: InteractionOptions(
-                            flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                          ),
+                      child: GoogleMap(
+                        initialCameraPosition: const CameraPosition(
+                          target: LatLng(30.0444, 31.2357), // Default Cairo
+                          zoom: 11.0,
                         ),
-                        children: [
-                          TileLayer(
-                            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                            userAgentPackageName: 'com.automate.app',
+                        markers: markers,
+                        myLocationEnabled: true,
+                        myLocationButtonEnabled: false,
+                        zoomControlsEnabled: false,
+                        mapToolbarEnabled: false,
+                        gestureRecognizers: {
+                          Factory<OneSequenceGestureRecognizer>(
+                            () => EagerGestureRecognizer(),
                           ),
-                          MarkerLayer(
-                            markers: provider.serviceCenters.where((s) => s.latitude != null && s.longitude != null).map((center) {
-                              return Marker(
-                                point: LatLng(center.latitude!, center.longitude!),
-                                width: 40,
-                                height: 40,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _showSpecialistDetails(context, center);
-                                  },
-                                  child: const Icon(Icons.location_on, color: Color(0xFF0F172A), size: 32),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ],
+                        },
                       ),
                     ),
                   );

@@ -98,28 +98,19 @@ class WelcomeScreen extends StatelessWidget {
                   
                   const SizedBox(height: 40),
                   
-                  // Primary Get Started Button
+                  // Primary Auth Button
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/register');
+                      Navigator.pushNamed(context, '/login');
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Get Started'),
+                        Icon(Icons.phone_android, size: 18),
                         SizedBox(width: 8),
-                        Icon(Icons.arrow_forward, size: 18),
+                        Text('Continue with Phone'),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  
-                  // Secondary Sign In Button
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    child: const Text('Sign In'),
                   ),
                   const SizedBox(height: 32),
                   

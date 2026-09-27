@@ -22,9 +22,9 @@ class AuthService {
         final data = jsonDecode(response.body);
         return {'success': true, 'devOtp': data['devOtp'], 'isNewUser': data['isNewUser'] == true};
       }
-      return {'success': false, 'error': 'Server error: ${response.statusCode}'};
+      return {'success': false, 'error': ApiService.parseResponseError(response)};
     } catch (e) {
-      return {'success': false, 'error': e.toString()};
+      return {'success': false, 'error': ApiService.parseError(e)};
     }
   }
 
@@ -45,9 +45,9 @@ class AuthService {
         }
         return null; // success
       }
-      return 'Verification failed: ${response.statusCode}';
+      return ApiService.parseResponseError(response);
     } catch (e) {
-      return e.toString();
+      return ApiService.parseError(e);
     }
   }
 

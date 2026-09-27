@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import '../providers/car_provider.dart';
+import '../models/car.dart';
+import '../models/service_center.dart';
+import 'profile_screen.dart';
+import 'notifications_screen.dart';
+import '../widgets/notification_bell.dart';
 
 class AddServiceScreen extends StatelessWidget {
   const AddServiceScreen({super.key});
@@ -26,15 +32,20 @@ class AddServiceScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none),
-            onPressed: () {},
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: CircleAvatar(
-              radius: 14,
-              backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'), // Placeholder avatar
+          const NotificationBell(color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                );
+              },
+              child: const CircleAvatar(
+                radius: 14,
+                backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'), // Placeholder avatar
+              ),
             ),
           )
         ],

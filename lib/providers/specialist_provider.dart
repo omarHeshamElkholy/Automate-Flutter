@@ -35,10 +35,10 @@ class SpecialistProvider with ChangeNotifier {
         final List<dynamic> list = data['serviceCenters'] ?? [];
         _serviceCenters = list.map((j) => ServiceCenter.fromJson(j)).toList();
       } else {
-        _error = 'Failed to load workshops (${response.statusCode})';
+        _error = ApiService.parseResponseError(response);
       }
     } catch (e) {
-      _error = e.toString();
+      _error = ApiService.parseError(e);
     } finally {
       _isLoading = false;
       notifyListeners();

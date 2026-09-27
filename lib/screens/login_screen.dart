@@ -139,6 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) return 'Please enter your phone number';
+                              if (!RegExp(r'^\d{9,15}$').hasMatch(value)) return 'Enter a valid phone number (9-15 digits)';
                               return null;
                             },
                           ),
@@ -171,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               counterText: '',
                             ),
                             validator: (value) {
-                              if (value == null || value.length < 6) return 'Please enter 6 digits';
+                              if (value == null || value.length != 6) return 'Please enter a 6-digit code';
+                              if (!RegExp(r'^\d{6}$').hasMatch(value)) return 'Code must contain only digits';
                               return null;
                             },
                           ),
@@ -184,6 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 8),
                             TextFormField(
                               controller: _fullNameController,
+                              keyboardType: TextInputType.name,
                               textCapitalization: TextCapitalization.words,
                               decoration: const InputDecoration(
                                 hintText: 'John Doe',
@@ -191,6 +194,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) return 'Please enter your full name';
+                                if (value.trim().length < 3) return 'Name must be at least 3 characters';
+                                if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) return 'Name can only contain letters';
                                 return null;
                               },
                             ),

@@ -3,7 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../providers/car_provider.dart';
 import '../models/car.dart';
+import '../models/maintenance_record.dart';
 import '../models/maintenance_summary.dart';
+import '../widgets/record_details_modal.dart';
+import 'notifications_screen.dart';
+import '../widgets/notification_bell.dart';
+import 'profile_screen.dart';
+import 'specialists_list_screen.dart';
 
 class VehicleDetailsScreen extends StatefulWidget {
   const VehicleDetailsScreen({super.key});
@@ -63,10 +69,7 @@ class _VehicleDetailsScreenState extends State<VehicleDetailsScreen> {
             ),
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.notifications_none, color: Color(0xFF0F172A)),
-              onPressed: () {},
-            ),
+            const NotificationBell(),
             PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert, color: Color(0xFF0F172A)),
               onSelected: (value) async {
@@ -111,11 +114,19 @@ class _VehicleDetailsScreenState extends State<VehicleDetailsScreen> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: CircleAvatar(
-                radius: 14,
-                backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 14,
+                  backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+                ),
               ),
             )
           ],
@@ -439,7 +450,10 @@ class _OverviewTab extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Upcoming Reminders', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              Text('View All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: const Color(0xFF0F172A).withValues(alpha: 0.8))),
+              GestureDetector(
+                onTap: () => DefaultTabController.of(context).animateTo(3),
+                child: Text('View All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: const Color(0xFF0F172A).withValues(alpha: 0.8))),
+              ),
             ],
           ),
           const SizedBox(height: 12),
@@ -480,7 +494,15 @@ class _OverviewTab extends StatelessWidget {
                   Text('Nearby Specialists', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ],
               ),
-              Text('View All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: const Color(0xFF0F172A).withValues(alpha: 0.8))),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SpecialistsListScreen()),
+                  );
+                },
+                child: Text('View All', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: const Color(0xFF0F172A).withValues(alpha: 0.8))),
+              ),
             ],
           ),
           const SizedBox(height: 12),
@@ -509,18 +531,20 @@ class _OverviewTab extends StatelessWidget {
               final record = entry.value;
               final numberFormat = NumberFormat('#,##0');
               final formattedMileage = '${numberFormat.format(record.mileageAtService)} km';
+              final formattedDate = DateFormat('MMM dd, yyyy').format(DateTime.parse(record.date).toLocal());
               return _buildTimelineItem(
-                '${record.date} • $formattedMileage', 
+                '$formattedDate • $formattedMileage', 
                 record.maintenanceType, 
                 record.description, 
                 isFirst: index == 0,
-                isLast: index == 2 || index == records.length - 1
+                isLast: index == 2 || index == records.length - 1,
+                onTap: () => showRecordDetailsModal(context, record),
               );
             }),
           
           const SizedBox(height: 16),
           TextButton(
-            onPressed: () {},
+            onPressed: () => DefaultTabController.of(context).animateTo(2),
             child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -710,7 +734,7 @@ class _OverviewTab extends StatelessWidget {
     );
   }
 
-  Widget _buildTimelineItem(String date, String title, String description, {bool isFirst = false, bool isLast = false}) {
+  Widget _buildTimelineItem(String date, String title, String description, {bool isFirst = false, bool isLast = false, VoidCallback? onTap}) {
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -746,8 +770,11 @@ class _OverviewTab extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: onTap,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(date, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
                   const SizedBox(height: 8),
@@ -777,6 +804,7 @@ class _OverviewTab extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
               ),
             ),
           ),
@@ -810,13 +838,15 @@ class _ServicesTab extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: const Color(0xFFE5EEFF)),
-              borderRadius: BorderRadius.circular(8),
-            ),
+          GestureDetector(
+            onTap: () => showScheduledServiceModal(context, 'Major Engine Service', 'Due in 1,240 km • Oct 24, 2024'),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: const Color(0xFFE5EEFF)),
+                borderRadius: BorderRadius.circular(8),
+              ),
             child: Row(
               children: [
                 Container(
@@ -849,6 +879,7 @@ class _ServicesTab extends StatelessWidget {
                 ),
               ],
             ),
+            ),
           ),
           const SizedBox(height: 32),
 
@@ -856,12 +887,16 @@ class _ServicesTab extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Service History', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              Row(
-                children: [
-                  const Text('VIEW ALL', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1)),
-                  const SizedBox(width: 4),
-                  const Icon(Icons.chevron_right, size: 16),
-                ],
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => DefaultTabController.of(context).animateTo(2),
+                child: Row(
+                  children: [
+                    const Text('VIEW ALL', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1)),
+                    const SizedBox(width: 4),
+                    const Icon(Icons.chevron_right, size: 16),
+                  ],
+                ),
               ),
             ],
           ),
@@ -877,14 +912,16 @@ class _ServicesTab extends StatelessWidget {
               final index = entry.key;
               final record = entry.value;
               final formattedMileage = '${numberFormat.format(record.mileageAtService)} km';
+              final formattedDate = DateFormat('MMM dd, yyyy').format(DateTime.parse(record.date).toLocal());
               return _buildHistoryItem(
-                record.date, 
+                formattedDate, 
                 'EGP ${record.cost.toStringAsFixed(2)}', 
                 record.maintenanceType, 
                 formattedMileage, 
                 record.serviceCenterId ?? 'Verified Workshop', 
                 isFirst: index == 0, 
-                isLast: index == records.length - 1
+                isLast: index == records.length - 1,
+                onTap: () => showRecordDetailsModal(context, record),
               );
             }),
         ],
@@ -893,7 +930,7 @@ class _ServicesTab extends StatelessWidget {
     });
   }
 
-  Widget _buildHistoryItem(String date, String price, String title, String mileage, String footerTag, {bool isFirst = false, bool isLast = false}) {
+  Widget _buildHistoryItem(String date, String price, String title, String mileage, String footerTag, {bool isFirst = false, bool isLast = false, VoidCallback? onTap}) {
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -929,8 +966,11 @@ class _ServicesTab extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 24.0),
-              child: Container(
-                padding: const EdgeInsets.all(16),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: onTap,
+                child: Container(
+                  padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: const Color(0xFFE5EEFF)),
@@ -964,6 +1004,7 @@ class _ServicesTab extends StatelessWidget {
                 ),
               ),
             ),
+          ),
           ),
         ],
       ),
@@ -1051,8 +1092,11 @@ class _ExpensesTab extends StatelessWidget {
                 child: Text('No expenses recorded yet', style: TextStyle(color: Color(0xFF515F74))),
               ))
             else
-              ...records.map((record) => Container(
-                margin: const EdgeInsets.only(bottom: 12),
+              ...records.map((record) => GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => showRecordDetailsModal(context, record),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 12),
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -1068,12 +1112,13 @@ class _ExpensesTab extends StatelessWidget {
                         children: [
                           Text(record.maintenanceType.replaceAll('_', ' '), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                           const SizedBox(height: 4),
-                          Text(record.date, style: const TextStyle(color: Color(0xFF515F74), fontSize: 12)),
+                          Text(DateFormat('MMM dd, yyyy').format(DateTime.parse(record.date).toLocal()), style: const TextStyle(color: Color(0xFF515F74), fontSize: 12)),
                         ],
                       ),
                     ),
                     Text('EGP ${numberFormat.format(record.cost)}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF0F172A))),
                   ],
+                ),
                 ),
               )),
           ],

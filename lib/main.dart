@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'screens/auth_wrapper.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
-import 'screens/register_screen.dart';
 import 'screens/main_scaffold.dart';
 import 'screens/add_vehicle_screen.dart';
 import 'screens/vehicle_details_screen.dart';
@@ -117,9 +117,9 @@ class MyCarEgyptApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => const AuthWrapper(),
+        '/welcome': (context) => const WelcomeScreen(),
         '/login': (context) => const LoginScreen(),
-        '/register': (context) => const RegisterScreen(),
         '/main': (context) => const MainScaffold(),
         '/vehicle-details': (context) => const VehicleDetailsScreen(),
         '/add-vehicle': (context) => const AddVehicleScreen(),

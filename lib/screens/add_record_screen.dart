@@ -212,7 +212,12 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                 controller: _mileageController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(labelText: 'Service Mileage (km)', border: OutlineInputBorder(), filled: true, fillColor: Colors.white),
-                validator: (value) => value!.isEmpty ? 'Required' : null,
+                validator: (value) {
+                  if (value == null || value.isEmpty) return 'Required';
+                  final mileage = int.tryParse(value);
+                  if (mileage == null || mileage < 0) return 'Must be a valid positive number';
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               
@@ -221,7 +226,12 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
                 controller: _costController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(labelText: 'Cost (EGP)', border: OutlineInputBorder(), filled: true, fillColor: Colors.white),
-                validator: (value) => value!.isEmpty ? 'Required' : null,
+                validator: (value) {
+                  if (value == null || value.isEmpty) return 'Required';
+                  final cost = double.tryParse(value);
+                  if (cost == null || cost < 0) return 'Must be a valid positive number';
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               
@@ -243,7 +253,12 @@ class _AddRecordScreenState extends State<AddRecordScreen> {
               TextFormField(
                 controller: _centerNameController,
                 decoration: const InputDecoration(labelText: 'Service Center Name', border: OutlineInputBorder(), filled: true, fillColor: Colors.white),
-                validator: (value) => value!.isEmpty ? 'Required' : null,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) return 'Required';
+                  if (value.trim().length < 3) return 'Name must be at least 3 characters';
+                  if (!RegExp(r'[a-zA-Z]').hasMatch(value)) return 'Name must contain letters';
+                  return null;
+                },
               ),
               const SizedBox(height: 16),
               

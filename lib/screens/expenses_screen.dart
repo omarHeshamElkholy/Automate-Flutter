@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../providers/car_provider.dart';
+import '../widgets/record_details_modal.dart';
 
 class ExpensesScreen extends StatelessWidget {
   const ExpensesScreen({super.key});
@@ -95,8 +96,11 @@ class ExpensesScreen extends StatelessWidget {
                       final car = record.carId != null ? provider.getCar(record.carId!) : null;
                       final carName = car != null ? '${car.make} ${car.model}' : 'Unknown Vehicle';
 
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 12),
+                      return GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => showRecordDetailsModal(context, record),
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 12),
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -139,7 +143,7 @@ class ExpensesScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    record.date,
+                                    DateFormat('MMM dd, yyyy').format(DateTime.parse(record.date).toLocal()),
                                     style: const TextStyle(color: Color(0xFF515F74), fontSize: 12),
                                   ),
                                 ],
@@ -157,6 +161,7 @@ class ExpensesScreen extends StatelessWidget {
                               ),
                             ),
                           ],
+                        ),
                         ),
                       );
                     }),

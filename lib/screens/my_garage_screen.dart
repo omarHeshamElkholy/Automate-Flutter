@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/car_provider.dart';
+import '../models/car.dart';
 import 'package:intl/intl.dart';
+import 'notifications_screen.dart';
+import '../widgets/notification_bell.dart';
+import 'vehicle_details_screen.dart';
 
 class MyGarageScreen extends StatelessWidget {
   const MyGarageScreen({super.key});
@@ -36,10 +40,7 @@ class MyGarageScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_none),
-            onPressed: () {},
-          ),
+          const NotificationBell(),
         ],
       ),
       body: SafeArea(

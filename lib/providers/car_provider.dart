@@ -51,10 +51,10 @@ class CarProvider with ChangeNotifier {
           // Optional: eagerly fetch records and reminders, or fetch them lazily in the details screen
         }
       } else {
-        _errorMessage = 'Failed to load cars: ${response.statusCode}';
+        _errorMessage = ApiService.parseResponseError(response);
       }
     } catch (e) {
-      _errorMessage = 'Error loading cars: $e';
+      _errorMessage = ApiService.parseError(e);
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -122,8 +122,10 @@ class CarProvider with ChangeNotifier {
         await fetchCars();
         return true;
       }
+      _errorMessage = ApiService.parseResponseError(response);
       return false;
     } catch (e) {
+      _errorMessage = ApiService.parseError(e);
       return false;
     }
   }
@@ -140,8 +142,10 @@ class CarProvider with ChangeNotifier {
         await fetchReminders(carId);
         return true;
       }
+      _errorMessage = ApiService.parseResponseError(response);
       return false;
     } catch (e) {
+      _errorMessage = ApiService.parseError(e);
       return false;
     }
   }
@@ -157,8 +161,10 @@ class CarProvider with ChangeNotifier {
         await fetchCars();
         return true;
       }
+      _errorMessage = ApiService.parseResponseError(response);
       return false;
     } catch (e) {
+      _errorMessage = ApiService.parseError(e);
       return false;
     }
   }
@@ -178,8 +184,10 @@ class CarProvider with ChangeNotifier {
         await fetchReminders(carId);
         return true;
       }
+      _errorMessage = ApiService.parseResponseError(response);
       return false;
     } catch (e) {
+      _errorMessage = ApiService.parseError(e);
       return false;
     }
   }
@@ -191,8 +199,10 @@ class CarProvider with ChangeNotifier {
         await fetchCars();
         return true;
       }
+      _errorMessage = ApiService.parseResponseError(response);
       return false;
     } catch (e) {
+      _errorMessage = ApiService.parseError(e);
       return false;
     }
   }
